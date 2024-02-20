@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 //main component
 export default function Login() {
   return (
-    <div className="  w-[40vw] h-[70vh] rounded-md shadow-xl bg-gray-50  max-sm:w-full max-sm:h-fit ">
+    <div className="  w-[40vw] h-[70vh] rounded-md shadow-xl bg-gray-50  max-sm:w-full max-sm:h-fit mt-10 max-sm:mt-4 ">
       <div className="flex flex-col gap-6 p-8 pb-0">
         <div>
           <h1 className="text-4xl font-bold">Sign In</h1>
