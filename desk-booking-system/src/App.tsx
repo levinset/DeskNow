@@ -1,13 +1,12 @@
-
+import LoginRegisterView from "./components/LoginRegisterView";
 
 function App() {
-  
-
   return (
     <>
-     <h1 className="uppercase text-center">Challenge - Desk Booking System</h1>
+      <h1 className="text-center uppercase">Challenge - Desk Booking System</h1>
+      <LoginRegisterView />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
