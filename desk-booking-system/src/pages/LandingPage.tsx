@@ -2,7 +2,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 //image adreess
-const heroImage = "src/Images/heroImage.jpg";
+const heroImage = "src/Images/heroImage.png";
 //main components
 export const LandingPage = () => {
   return (
@@ -30,7 +30,7 @@ export const LandingPage = () => {
               </p>
 
               <a
-                href="#"
+                href="/login"
                 className="inline-block px-12 py-3 mt-8 text-sm font-medium text-white transition bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
               >
                 Get Started Today

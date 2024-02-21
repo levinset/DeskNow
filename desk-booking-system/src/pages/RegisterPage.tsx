@@ -4,6 +4,8 @@ import Register from "../components/Register";
 import { useAddUser } from "../hooks/useAddUser";
 import { UserInputType } from "../types/UserInputType";
 import SuccessRegister from "../components/SuccessRegister";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 //main component
 export default function RegisterPage() {
@@ -20,9 +22,13 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex flex-row justify-center h-screen bg-[#C7D2FF] ">
-      {!successMessage && <Register onSubmit={onSubmit} />}
-      {successMessage && <SuccessRegister />}
+    <div>
+      <Header />
+      <div className="flex flex-row justify-center h-screen bg-[#C7D2FF] ">
+        {!successMessage && <Register onSubmit={onSubmit} />}
+        {successMessage && <SuccessRegister />}
+      </div>
+      <Footer />
     </div>
   );
 }

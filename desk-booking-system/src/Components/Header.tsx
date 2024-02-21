@@ -1,14 +1,14 @@
 //importlibraries
-import Logo from "../Images/Logo.jpg";
+import Logo from "../Images/Logo.png";
 
 //
 const Header = () => {
   return (
     <div>
-      <div className="py-10 border-b-4 lg:px-24">
+      <div className="py-0 border-b-4 lg:px-24">
         <header className="flex flex-wrap items-center px-6 py-2 bg-white lg:px-16 lg:py-0">
           <div className="flex items-center justify-between flex-1">
-            <img src={Logo} alt="DeskNow" />
+            <img className="w-20 " src={Logo} alt="DeskNow" />
           </div>
 
           <label
@@ -37,7 +37,7 @@ const Header = () => {
                 <li>
                   <a
                     className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:border-indigo-400"
-                    href="#"
+                    href="/"
                   >
                     Home
                   </a>
@@ -45,7 +45,7 @@ const Header = () => {
                 <li>
                   <a
                     className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:border-indigo-400"
-                    href="#"
+                    href="/register"
                   >
                     Register
                   </a>
@@ -53,7 +53,7 @@ const Header = () => {
                 <li>
                   <a
                     className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:border-indigo-400"
-                    href="#"
+                    href="/login"
                   >
                     Sign in
                   </a>
