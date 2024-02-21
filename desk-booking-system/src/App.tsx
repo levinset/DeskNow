@@ -1,11 +1,14 @@
 
+import LandingPage from "./Components/LandingPage"
+import UserHeader from "./Components/UserHeader"
+
 
 function App() {
   
 
   return (
     <>
-     <h1 className="uppercase text-center">Challenge - Desk Booking System</h1>
+     <UserHeader/>
     </>
   )
 }
