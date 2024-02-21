@@ -1,12 +1,14 @@
 import React from "react";
+import Logo from '../Images/Logo.jpg'
 
 const Header = () => {
+
   return (
     <div>
       <div className="lg:px-24 border-b-4  py-10">
         <header className="lg:px-16 px-6 bg-white flex flex-wrap items-center lg:py-0 py-2">
           <div className="flex-1 flex justify-between items-center">
-            <h1>DeskNow</h1>
+            <img src={Logo} alt="DeskNow"/>
           </div>
 
           <label for="menu-toggle" class="pointer-cursor lg:hidden block">
