@@ -1,12 +1,11 @@
-//
+//import libaries and components
 import { useState } from "react";
 import Register from "../components/Register";
 import { useAddUser } from "../hooks/useAddUser";
 import { UserInputType } from "../types/UserInputType";
 import SuccessRegister from "../components/SuccessRegister";
-//
 
-//
+//main component
 export default function RegisterPage() {
   const { mutate: registerUsers } = useAddUser();
   const [successMessage, setSuccessMessage] = useState<string | null>(null); // State to track success message

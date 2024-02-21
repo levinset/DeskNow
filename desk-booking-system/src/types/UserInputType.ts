@@ -1,4 +1,4 @@
-//
+//user input type for registration
 export interface UserInputType {
   firstname: string;
   lastname: string;

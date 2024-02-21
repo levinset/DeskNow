@@ -1,6 +1,8 @@
+//import libaries and comonents
 import Login from "../components/Login";
 import { UserLoginType } from "../types/UserLoginType";
 
+//main component
 export default function LoginPage() {
   //
   const onSubmit = async (data: UserLoginType) => {

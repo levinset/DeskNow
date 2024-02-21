@@ -1,19 +1,22 @@
-import React from "react";
-import Logo from '../Images/Logo.jpg'
+//importlibraries
+import Logo from "../Images/Logo.jpg";
 
+//
 const Header = () => {
-
   return (
     <div>
-      <div className="lg:px-24 border-b-4  py-10">
-        <header className="lg:px-16 px-6 bg-white flex flex-wrap items-center lg:py-0 py-2">
-          <div className="flex-1 flex justify-between items-center">
-            <img src={Logo} alt="DeskNow"/>
+      <div className="py-10 border-b-4 lg:px-24">
+        <header className="flex flex-wrap items-center px-6 py-2 bg-white lg:px-16 lg:py-0">
+          <div className="flex items-center justify-between flex-1">
+            <img src={Logo} alt="DeskNow" />
           </div>
 
-          <label for="menu-toggle" class="pointer-cursor lg:hidden block">
+          <label
+            htmlFor="menu-toggle"
+            className="block pointer-cursor lg:hidden"
+          >
             <svg
-              className="fill-current text-gray-900"
+              className="text-gray-900 fill-current"
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
@@ -26,14 +29,14 @@ const Header = () => {
           <input className="hidden" type="checkbox" id="menu-toggle" />
 
           <div
-            className="hidden lg:flex lg:items-center lg:w-auto w-full"
+            className="hidden w-full lg:flex lg:items-center lg:w-auto"
             id="menu"
           >
             <nav>
-              <ul className="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0">
+              <ul className="items-center justify-between pt-4 text-base text-gray-700 lg:flex lg:pt-0">
                 <li>
                   <a
-                    className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"
+                    className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:border-indigo-400"
                     href="#"
                   >
                     Home
@@ -41,7 +44,7 @@ const Header = () => {
                 </li>
                 <li>
                   <a
-                    className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"
+                    className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:border-indigo-400"
                     href="#"
                   >
                     Register
@@ -49,7 +52,7 @@ const Header = () => {
                 </li>
                 <li>
                   <a
-                    className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"
+                    className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:border-indigo-400"
                     href="#"
                   >
                     Sign in

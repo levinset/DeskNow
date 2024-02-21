@@ -1,20 +1,24 @@
-import React from "react";
+//
 
+//
 const UserHeader = () => {
   const imageUrl =
     "https://i.pinimg.com/564x/de/0f/3d/de0f3d06d2c6dbf29a888cf78e4c0323.jpg";
 
   return (
     <div>
-      <div className="lg:px-24 border-b-4  py-5">
-        <header className="lg:px-16 px-6 bg-white flex flex-wrap items-center lg:py-0 py-2">
-          <div className="flex-1 flex justify-between items-center">
+      <div className="py-5 border-b-4 lg:px-24">
+        <header className="flex flex-wrap items-center px-6 py-2 bg-white lg:px-16 lg:py-0">
+          <div className="flex items-center justify-between flex-1">
             <h1>DeskNow</h1>
           </div>
 
-          <label for="menu-toggle" class="pointer-cursor lg:hidden block">
+          <label
+            htmlFor="menu-toggle"
+            className="block pointer-cursor lg:hidden"
+          >
             <svg
-              className="fill-current text-gray-900 border-2 border-gray-400 rounded toggle icon"
+              className="text-gray-900 border-2 border-gray-400 rounded fill-current toggle icon"
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
@@ -27,14 +31,14 @@ const UserHeader = () => {
           <input className="hidden" type="checkbox" id="menu-toggle" />
 
           <div
-            className="hidden lg:flex lg:items-center lg:w-auto w-full"
+            className="hidden w-full lg:flex lg:items-center lg:w-auto"
             id="menu"
           >
             <nav>
-              <ul className="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0">
+              <ul className="items-center justify-between pt-4 text-base text-gray-700 lg:flex lg:pt-0">
                 <li>
                   <a
-                    className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"
+                    className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:border-indigo-400"
                     href="#"
                   >
                     Home
@@ -42,7 +46,7 @@ const UserHeader = () => {
                 </li>
                 <li>
                   <a
-                    className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"
+                    className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:border-indigo-400"
                     href="#"
                   >
                     Favourites
@@ -50,7 +54,7 @@ const UserHeader = () => {
                 </li>
                 <li>
                   <a
-                    className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"
+                    className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:border-indigo-400"
                     href="#"
                   >
                     Booking Plan
@@ -59,7 +63,7 @@ const UserHeader = () => {
 
                 <li>
                   <a
-                    className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"
+                    className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:border-indigo-400"
                     href="#"
                   >
                     Reservation
@@ -68,9 +72,9 @@ const UserHeader = () => {
               </ul>
             </nav>
             <div
-                className="bg-center bg-cover bg-no-repeat rounded-full inline-block h-12 w-12 ml-2"
-                style={{ backgroundImage: `url(${imageUrl})` }}
-              ></div>
+              className="inline-block w-12 h-12 ml-2 bg-center bg-no-repeat bg-cover rounded-full"
+              style={{ backgroundImage: `url(${imageUrl})` }}
+            ></div>
           </div>
         </header>
       </div>
