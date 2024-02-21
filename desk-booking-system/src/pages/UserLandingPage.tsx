@@ -5,7 +5,7 @@ import InfoCard from "../components/InfoCard";
 //
 const imageUrl = "src/Images/frame.png";
 //main componet
-export default function UserProfilePage() {
+export default function UserLandingPage() {
   return (
     <div>
       <Header />
