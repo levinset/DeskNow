@@ -7,7 +7,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "./pages/LoginPage.tsx";
 import RegisterPage from "./pages/RegisterPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import SuccessRegister from "./components/SuccessRegister.tsx";
+import UserProfilePage from "./pages/UserProfilePage.tsx";
+
 //
 // Create a client
 const queryClient = new QueryClient();
@@ -26,8 +27,8 @@ const router = createBrowserRouter([
     element: <RegisterPage />,
   },
   {
-    path: "/suc",
-    element: <SuccessRegister />,
+    path: "/userprofile",
+    element: <UserProfilePage />,
   },
 ]);
 
