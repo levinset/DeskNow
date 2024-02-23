@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function SuccessRegister() {
   return (
     <div className="flex flex-row justify-center h-screen  bg-[#C7D2FF]   ">
-      <div className="  w-[40vw] h-[30vh] rounded-md shadow-xl bg-gray-50  max-sm:w-full max-sm:h-fit mt-10 max-sm:mt-4 items-center justify-center ">
+      <div className="  w-[40vw] h-fit rounded-md shadow-xl bg-gray-50  max-sm:w-full max-sm:h-fit mt-10 max-sm:mt-4 items-center justify-center ">
         <div className="flex flex-col items-center justify-center gap-6 p-8 pb-0 mb-10">
           <div className="flex items-center justify-center pt-10 ">
             <h1 className="text-4xl font-bold text-center text-green-600">

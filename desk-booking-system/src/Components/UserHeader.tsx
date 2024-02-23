@@ -1,5 +1,6 @@
 //
-
+//importlibraries
+import Logo from "../Images/Logo.png";
 //
 const UserHeader = () => {
   const imageUrl =
@@ -7,10 +8,10 @@ const UserHeader = () => {
 
   return (
     <div>
-      <div className="py-5 border-b-4 lg:px-24">
-        <header className="flex flex-wrap items-center px-6 py-2 bg-white lg:px-16 lg:py-0">
+      <div className="">
+        <header className="flex flex-wrap items-center px-6 py-4 bg-white lg:px-16 lg:py-4">
           <div className="flex items-center justify-between flex-1">
-            <h1>DeskNow</h1>
+            <img className="w-20 " src={Logo} alt="DeskNow" />
           </div>
 
           <label
@@ -39,7 +40,7 @@ const UserHeader = () => {
                 <li>
                   <a
                     className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:border-indigo-400"
-                    href="#"
+                    href="/"
                   >
                     Home
                   </a>

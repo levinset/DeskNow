@@ -8,6 +8,9 @@ import LoginPage from "./pages/LoginPage.tsx";
 import RegisterPage from "./pages/RegisterPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import UserLandingPage from "./pages/UserLandingPage.tsx";
+import OfficesListPage from "./pages/OfficesListPage.tsx";
+import OfficePage from "./pages/OfficePage.tsx";
+import DesksAllPage from "./pages/DesksAllPage.tsx";
 
 //
 // Create a client
@@ -29,6 +32,18 @@ const router = createBrowserRouter([
   {
     path: "/userprofile",
     element: <UserLandingPage />,
+  },
+  {
+    path: "/offices",
+    element: <OfficesListPage />,
+  },
+  {
+    path: "/alldesks",
+    element: <DesksAllPage />,
+  },
+  {
+    path: "/office",
+    element: <OfficePage />,
   },
 ]);
 

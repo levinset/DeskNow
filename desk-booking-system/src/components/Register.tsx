@@ -7,20 +7,25 @@ import * as yup from "yup";
 //types
 import { UserInputType } from "../types/UserInputType";
 import { useState } from "react";
+import { useGetAllDepartments } from "../hooks/useGetAllDepartments";
 interface RegisterProps {
   onSubmit: SubmitHandler<UserInputType>;
 }
+
 //
 //user shema input erro handller
 const schema = yup.object().shape({
   firstname: yup.string().required("*"),
   lastname: yup.string().required("*"),
   email: yup.string().required("*"),
-  department: yup.string().required(),
+  department: yup.string().required("*"),
   password: yup.string().required("*"),
 });
+
 //main component
 export default function Register({ onSubmit }: RegisterProps) {
+  //use query getting all departments
+  const { data, isLoading, isError } = useGetAllDepartments();
   //react form with yup resolver
   const {
     register,
@@ -30,12 +35,12 @@ export default function Register({ onSubmit }: RegisterProps) {
   //term of policy accaptance
   const [isChecked, setIsChecked] = useState(false);
   const [showCheckboxError, setShowCheckboxError] = useState(false); // State to track if the checkbox error message should be shown
-
+  //handle checkbox
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsChecked(e.target.checked);
     setShowCheckboxError(false); // Reset the checkbox error message when the checkbox is checked
   };
-
+  //handel registration
   const handleRegistration = () => {
     if (!Object.keys(errors).length) {
       // Check if there are no Yup errors
@@ -46,10 +51,11 @@ export default function Register({ onSubmit }: RegisterProps) {
     }
     handleSubmit(onSubmit)();
   };
+  //
 
-  //main components
+  //
   return (
-    <div className="  w-[40vw]  h-[85vh] rounded-md shadow-xl bg-gray-50 max-sm:w-full max-sm:h-fit mt-10 max-sm:mt-4 ">
+    <div className="  w-[40vw]  h-fit rounded-md shadow-xl bg-gray-50 max-sm:w-full max-sm:h-fit mt-10 max-sm:mt-4 ">
       <div className="flex flex-col gap-6 p-8 pb-0">
         <div>
           <h1 className="text-4xl font-bold">Sign Up</h1>
@@ -118,13 +124,26 @@ export default function Register({ onSubmit }: RegisterProps) {
                 placeholder="Password"
               />
             </div>
-            <select
-              {...register("department")}
-              className="hidden inputStyle"
-              defaultValue="CodingSchool"
-            >
-              <option value="CodingSchool">Coding School Department</option>
-            </select>
+            <div className="flex flex-row gap-1 ">
+              {errors.department && (
+                <p className="text-red-500 ">{errors.department.message}</p>
+              )}
+              <select
+                {...register("department")}
+                className="inputStyle"
+                defaultValue=""
+              >
+                <option value="">Please Select Your Department</option>
+                {data &&
+                  Object.keys(data).map((departmentKey, index) => (
+                    <option key={index} value={data[departmentKey]}>
+                      {data[departmentKey]} Department
+                    </option>
+                  ))}
+              </select>
+              {isLoading && <p>Loading...</p>}
+              {isError && <p>Daten konnten nicht geladen werden...</p>}
+            </div>
           </form>
         </div>
         <div className="flex flex-row items-center mt-4 mb-8 max-sm:my-0 ">

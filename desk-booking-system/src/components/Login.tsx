@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 //types
 import { UserLoginType } from "../types/UserLoginType";
@@ -13,11 +14,13 @@ interface LoginProps {
 //user shema input erro handller
 const schema = yup.object().shape({
   email: yup.string().required("please enter your Email"),
-  password: yup.string().required("please enter your Email"),
+  password: yup.string().required("please enter your Password"),
 });
 
 //main component
 export default function Login({ onSubmit }: LoginProps) {
+  //
+  const navigate = useNavigate();
   //react form with yup resolver
   const {
     register,
@@ -27,9 +30,10 @@ export default function Login({ onSubmit }: LoginProps) {
   //handle Login
   const handleLogin = () => {
     handleSubmit(onSubmit)();
+    navigate("/userprofile");
   };
   return (
-    <div className="  w-[40vw] h-[70vh] rounded-md shadow-xl bg-gray-50  max-sm:w-full max-sm:h-fit mt-10 max-sm:mt-4 ">
+    <div className="  w-[40vw] h-fit rounded-md shadow-xl bg-gray-50  max-sm:w-full max-sm:h-fit mt-10 max-sm:mt-4 ">
       <div className="flex flex-col gap-6 p-8 pb-0">
         <div>
           <h1 className="text-4xl font-bold">Sign In</h1>
@@ -88,9 +92,11 @@ export default function Login({ onSubmit }: LoginProps) {
           >
             Sign In
           </button>
-          <Link className="text-[#6E41E2] " to="/register">
-            Registeration
-          </Link>
+          <div>
+            <Link className="text-[#6E41E2] " to="/register">
+              Registeration
+            </Link>
+          </div>
         </div>
       </div>
     </div>
