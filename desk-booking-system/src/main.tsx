@@ -12,6 +12,8 @@ import OfficesListPage from "./pages/OfficesListPage.tsx";
 import OfficePage from "./pages/OfficePage.tsx";
 import SuccessBooked from "./pages/SuccessBooked.tsx";
 import UserProfilePage from "./pages/UserProfilePage.tsx";
+import AdminPanel from "./pages/admin/AdminPanel.tsx";
+import LoginLoading from "./pages/LoginLoading.tsx";
 
 //
 // Create a client
@@ -27,11 +29,15 @@ const router = createBrowserRouter([
     element: <LoginPage />,
   },
   {
+    path: "/loginloading",
+    element: <LoginLoading />,
+  },
+  {
     path: "/register",
     element: <RegisterPage />,
   },
   {
-    path: "/userprofile",
+    path: "/userlanding",
     element: <UserLandingPage />,
   },
   {
@@ -49,6 +55,10 @@ const router = createBrowserRouter([
   {
     path: "/profile",
     element: <UserProfilePage />,
+  },
+  {
+    path: "/admin/adminpanel",
+    element: <AdminPanel />,
   },
 ]);
 

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
 
 //types
 import { UserLoginType } from "../types/UserLoginType";
@@ -19,18 +18,15 @@ const schema = yup.object().shape({
 
 //main component
 export default function Login({ onSubmit }: LoginProps) {
-  //
-  const navigate = useNavigate();
   //react form with yup resolver
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<UserLoginType>({ resolver: yupResolver(schema) });
-  //handle Login
+  //handle Login data pass
   const handleLogin = () => {
     handleSubmit(onSubmit)();
-    navigate("/userprofile");
   };
   return (
     <div className="  w-[40vw] h-fit rounded-md shadow-xl bg-gray-50  max-sm:w-full max-sm:h-fit mt-10 max-sm:mt-4 ">

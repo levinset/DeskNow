@@ -15,10 +15,12 @@ const imageUrl = "src/Images/frame.png";
 export default function UserLandingPage() {
   //
   const [userId, setUserId] = useState("");
+
   //query
   const { data, isLoading, isError } = useGetUserProfile();
   const { data: bookedDeskData } = useGetAllBookedDesk(userId);
   const { data: favouritesDeskData } = useGetAllFavouritesDesk(userId);
+
   useEffect(() => {
     if (data && data.id) {
       setUserId(data.id);

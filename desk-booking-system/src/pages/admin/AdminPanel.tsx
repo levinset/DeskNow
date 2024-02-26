@@ -1,21 +1,29 @@
+//import libraries
 import { useState } from "react";
-import { useUpdateUserProfile } from "../hooks/UseUpdateUserProfile";
-import UserProfileSection from "../components/UserProfileSection";
-import EditProfileForm from "../components/EditProfileForm";
-import { UserInputType } from "../types/UserInputType";
-import { useGetUserProfile } from "../hooks/useGetUserProfile";
+import { useUpdateUserProfile } from "../../hooks/UseUpdateUserProfile";
+import UserProfileSection from "../../components/UserProfileSection";
+import EditProfileForm from "../../components/EditProfileForm";
+import { UserInputType } from "../../types/UserInputType";
+import { useGetUserProfile } from "../../hooks/useGetUserProfile";
 import { useNavigate } from "react-router-dom";
-import UserHeader from "../components/UserHeader";
+//components
+import AdminHeader from "../../components/admin/AdminHeader";
+import ManageUsers from "../../components/admin/ManageUsers";
+import ManageComents from "../../components/admin/ManageComents";
+import ManageFixDeskRequests from "../../components/admin/ManageFixDeskRequests";
+import ManageOfiices from "../../components/admin/ManageOfiices";
+import ManageDesks from "../../components/admin/ManageDesks";
 
-const UserProfilePage = () => {
+//main component
+const AdminPanel = () => {
+  //queries and hooks
   const { data: userData } = useGetUserProfile();
   const [editing, setEditing] = useState(false);
-  const { mutate: updateUserProfile } = useUpdateUserProfile();
-  const navigate = useNavigate();
+  const [showOptions, setshowOptions] = useState("A");
 
-  const handleEditClick = () => {
-    setEditing(true);
-  };
+  const { mutate: updateUserProfile } = useUpdateUserProfile();
+  //navigation
+  const navigate = useNavigate();
 
   const onSubmit = async (formData: UserInputType) => {
     try {
@@ -33,7 +41,34 @@ const UserProfilePage = () => {
       console.error("Error registering user:", error);
     }
   };
-  //handle logout
+  //handle sidebar Menue
+  let componentToRender;
+  switch (showOptions) {
+    case "A":
+      componentToRender = <UserProfileSection />;
+      break;
+    case "B":
+      componentToRender = <EditProfileForm onSubmit={onSubmit} />;
+      break;
+    case "C":
+      componentToRender = <ManageComents />;
+      break;
+    case "D":
+      componentToRender = <ManageFixDeskRequests />;
+      break;
+    case "E":
+      componentToRender = <ManageOfiices />;
+      break;
+    case "F":
+      componentToRender = <ManageDesks />;
+      break;
+    case "G":
+      componentToRender = <ManageUsers />;
+      break;
+    default:
+      componentToRender = <div>No matching component found</div>;
+  }
+  //handle log out
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
@@ -42,19 +77,19 @@ const UserProfilePage = () => {
 
   return (
     <div>
-      <UserHeader />
+      <AdminHeader />
       <div className="flex flex-col h-screen gap-5 p-10 md:flex-row">
         {/* Sidebar */}
         <aside className="w-full text-white bg-white rounded-lg shadow-lg md:w-1/4">
           <div className="p-4">
-            <h2 className="text-2xl font-bold text-black">User Dashboard</h2>
+            <h2 className="text-2xl font-bold text-black">Admin Dashboard</h2>
           </div>
           <nav className="flex flex-col mt-4 ">
             <ul className="space-y-1">
               <li className="">
-                <a
-                  href="#"
-                  className="flex items-center gap-10 px-4 py-2 rounded-lg "
+                <div
+                  onClick={() => setshowOptions("A")}
+                  className="flex items-center gap-10 px-4 py-2 rounded-lg hover:cursor-pointer"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -71,17 +106,16 @@ const UserProfilePage = () => {
                     />
                   </svg>
 
-                  <span className="text-sm font-medium text-purple-700">
-                    {" "}
-                    Dashboard{" "}
-                  </span>
-                </a>
+                  <button className="text-sm font-medium text-purple-700">
+                    Admin Dashboard
+                  </button>
+                </div>
               </li>
 
               <li>
-                <a
-                  href="#"
-                  className="flex items-center gap-10 px-4 py-2 rounded-lg hover:bg-gray-100 hover:text-gray-700"
+                <div
+                  onClick={() => setshowOptions("C")}
+                  className="flex items-center gap-10 px-4 py-2 rounded-lg hover:cursor-pointer hover:bg-gray-100 hover:text-gray-700"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -98,17 +132,17 @@ const UserProfilePage = () => {
                     />
                   </svg>
 
-                  <span className="text-sm font-medium text-black">
+                  <button className="text-sm font-medium text-black">
                     {" "}
-                    Notification{" "}
-                  </span>
-                </a>
+                    Manage Coments{" "}
+                  </button>
+                </div>
               </li>
 
               <li>
-                <a
-                  href="#"
-                  className="flex items-center gap-10 px-4 py-2 rounded-lg hover:bg-gray-100 hover:text-gray-700"
+                <div
+                  onClick={() => setshowOptions("D")}
+                  className="flex items-center gap-10 px-4 py-2 rounded-lg hover:cursor-pointer hover:bg-gray-100 hover:text-gray-700"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -125,17 +159,17 @@ const UserProfilePage = () => {
                     />
                   </svg>
 
-                  <span className="text-sm font-medium text-black">
+                  <button className="text-sm font-medium text-black">
                     {" "}
-                    Booking Plan{" "}
-                  </span>
-                </a>
+                    Manage FixDesk Requests{" "}
+                  </button>
+                </div>
               </li>
 
               <li>
-                <a
-                  href="#"
-                  className="flex items-center gap-10 px-4 py-2 rounded-lg hover:bg-gray-100 hover:text-gray-700"
+                <div
+                  onClick={() => setshowOptions("E")}
+                  className="flex items-center gap-10 px-4 py-2 rounded-lg hover:cursor-pointer hover:bg-gray-100 hover:text-gray-700"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -152,17 +186,43 @@ const UserProfilePage = () => {
                     />
                   </svg>
 
-                  <span className="text-sm font-medium text-black">
+                  <button className="text-sm font-medium text-black">
                     {" "}
-                    Reservation{" "}
-                  </span>
-                </a>
+                    Manage Offices{" "}
+                  </button>
+                </div>
+              </li>
+              <li>
+                <div
+                  onClick={() => setshowOptions("F")}
+                  className="flex items-center gap-10 px-4 py-2 rounded-lg hover:cursor-pointer hover:bg-gray-100 hover:text-gray-700"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-8 h-8 bg-blue-300 rounded-md"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6.429 9.75 2.25 12l4.179 2.25m0-4.5 5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0 4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0-5.571 3-5.571-3"
+                    />
+                  </svg>
+
+                  <button className="text-sm font-medium text-black">
+                    {" "}
+                    Manage Desks{" "}
+                  </button>
+                </div>
               </li>
 
               <li>
-                <a
-                  href="#"
-                  className="flex items-center gap-10 px-4 py-2 rounded-lg hover:bg-gray-100 hover:text-gray-700"
+                <div
+                  onClick={() => setshowOptions("G")}
+                  className="flex items-center gap-10 px-4 py-2 rounded-lg  hover:cursor-pointer hover:bg-gray-100 hover:text-gray-700"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -179,16 +239,15 @@ const UserProfilePage = () => {
                     />
                   </svg>
 
-                  <span className="text-sm font-medium text-black">
-                    {" "}
-                    Schedule{" "}
-                  </span>
-                </a>
+                  <button className="text-sm font-medium text-black">
+                    Manage Users
+                  </button>
+                </div>
               </li>
             </ul>
             <button
               onClick={handleLogout}
-              className="px-4 py-2 mt-4 text-3xl font-bold text-black uppercase hover:bg-red-600"
+              className="px-4 py-2 mt-4 text-3xl font-bold text-black uppercase hover:bg-red-400 hover:text-white"
             >
               LogOut
             </button>
@@ -198,27 +257,25 @@ const UserProfilePage = () => {
         {/* Main Content */}
         <main className="flex-1 ">
           <div className="flex items-center justify-between mb-4">
-            <h1 className="text-2xl font-bold">Welcome, User!</h1>
+            <h1 className="text-2xl font-bold">
+              Welcome, {userData && userData.firstname}
+              {userData && userData.lastname}
+            </h1>
             {!editing && (
               <button
-                onClick={handleEditClick}
+                onClick={() => setshowOptions("B")}
                 className="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600"
               >
                 Edit Profile
               </button>
             )}
           </div>
-
           {/* Profile Section */}
-          {editing ? (
-            <EditProfileForm onSubmit={onSubmit} />
-          ) : (
-            <UserProfileSection />
-          )}
+          <div>{componentToRender}</div>
         </main>
       </div>
     </div>
   );
 };
 
-export default UserProfilePage;
+export default AdminPanel;

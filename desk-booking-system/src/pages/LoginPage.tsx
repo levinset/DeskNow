@@ -2,17 +2,28 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Login from "../components/Login";
+
 import { useLoginUser } from "../hooks/useLoginUser";
 import { UserLoginType } from "../types/UserLoginType";
+import { useNavigate } from "react-router-dom";
 
 //main component
 export default function LoginPage() {
   //
   const { mutate: loginUsers } = useLoginUser();
   //
+  const navigate = useNavigate();
+  //
   const onSubmit = async (data: UserLoginType) => {
     try {
-      await loginUsers(data);
+      await loginUsers(data, {
+        onSuccess: () => {
+          navigate("/loginloading");
+        },
+        onError: (error) => {
+          console.log(error.message);
+        },
+      });
     } catch (error) {
       console.error("Error login user:", error);
     }
