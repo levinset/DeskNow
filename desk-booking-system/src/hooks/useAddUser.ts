@@ -20,7 +20,7 @@ export const useAddUser = () => {
   return useMutation({
     mutationFn: addUsers,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["users"] });
+      queryClient.invalidateQueries({ queryKey: ["newDesk"] });
     },
   });
 };

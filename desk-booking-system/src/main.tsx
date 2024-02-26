@@ -10,7 +10,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import UserLandingPage from "./pages/UserLandingPage.tsx";
 import OfficesListPage from "./pages/OfficesListPage.tsx";
 import OfficePage from "./pages/OfficePage.tsx";
-import DesksAllPage from "./pages/DesksAllPage.tsx";
+import SuccessBooked from "./pages/SuccessBooked.tsx";
 
 //
 // Create a client
@@ -38,12 +38,12 @@ const router = createBrowserRouter([
     element: <OfficesListPage />,
   },
   {
-    path: "/alldesks",
-    element: <DesksAllPage />,
-  },
-  {
     path: "/office",
     element: <OfficePage />,
+  },
+  {
+    path: "/sucssesfullbooked",
+    element: <SuccessBooked />,
   },
 ]);
 

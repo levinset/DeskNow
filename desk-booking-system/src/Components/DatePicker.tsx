@@ -1,7 +1,14 @@
+//import libraries
 import { useState } from "react";
-import Datepicker, { DateValueType } from "react-tailwindcss-datepicker";
+import Datepicker from "react-tailwindcss-datepicker";
+//types
+import { DateValueType } from "../types/DateTypes";
+interface DatePickerProps {
+  onDatePickerChange: (value: DateValueType) => void;
+}
 
-const DatePicker = () => {
+//main component
+const DatePicker = ({ onDatePickerChange }: DatePickerProps) => {
   const today = new Date();
   const endDate = new Date(
     today.getFullYear(),
@@ -15,8 +22,8 @@ const DatePicker = () => {
   });
 
   const handleValueChange = (newValue: DateValueType) => {
-    console.log("newValue:", newValue);
     setValue(newValue);
+    onDatePickerChange(newValue);
   };
 
   return <Datepicker value={value} onChange={handleValueChange} />;

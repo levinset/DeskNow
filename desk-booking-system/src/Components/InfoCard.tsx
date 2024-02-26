@@ -1,19 +1,27 @@
 //
-
+import { DeskBookedProps } from "../types/DesksProps";
 //
-export default function InfoCard() {
+export default function InfoCard(props: DeskBookedProps) {
   return (
-    <div className="flex flex-col items-center justify-center gap-2 bg-[#E2E9FB] h-[30vh] rounded-lg shadow-md w-full ">
+    <div className="flex flex-col items-center justify-center gap-2 bg-[#E2E9FB] h-fit rounded-lg shadow-md w-full ">
       <div>
-        <h1 className="text-xl ">Todays Schedule</h1>
-      </div>
-      <div>
-        <h2>desk 5a-9</h2>
+        <h2> {props.officeName} </h2>
         <img src="" alt="" />
       </div>
       <div>
-        <h2>feb 07,2024</h2>
+        <h1 className="text-xl "> {props.label} </h1>
+      </div>
+      <div>
+        <h2> {props.dateStart} </h2>
         <img src="" alt="" />
+      </div>
+      <div>
+        <h2> {props.dateEnd} </h2>
+        <img src="" alt="" />
+      </div>
+
+      <div>
+        {props.column} {props.row}
       </div>
     </div>
   );

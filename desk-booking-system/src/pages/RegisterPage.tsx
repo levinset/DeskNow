@@ -6,6 +6,7 @@ import { UserInputType } from "../types/UserInputType";
 import SuccessRegister from "../components/SuccessRegister";
 
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 //main component
 export default function RegisterPage() {
@@ -23,6 +24,7 @@ export default function RegisterPage() {
 
   return (
     <div>
+      <Header />
       <div className="flex flex-row justify-center h-screen bg-[#C7D2FF] ">
         {!successMessage && <Register onSubmit={onSubmit} />}
         {successMessage && <SuccessRegister />}

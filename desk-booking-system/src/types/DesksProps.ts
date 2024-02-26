@@ -1,3 +1,6 @@
+//
+import { DateType } from "./DateTypes";
+//
 export interface DeskProps {
   id: string;
   label: string;
@@ -19,4 +22,64 @@ export interface DeskProps {
   };
   nextBooking: null;
   isUserFavourite: boolean;
+
+  // New properties for handling equipment visibility
+  showEquipment: boolean; // Indicates whether equipment details are visible
+  toggleEquipment: (id: string) => void; // Function to toggle equipment visibility
+}
+//
+export interface DeskBookInfoProps {
+  label: string;
+  row: string;
+  column: string;
+  type: string;
+  startDate: DateType | undefined;
+  endDate: DateType | undefined;
+  isUserFavourite: boolean;
+  equipment: ("HDMI" | "USBC" | "HeightAdjustable" | "DOCK")[];
+}
+//
+export interface DeskBookedProps {
+  label: string;
+  dateStart: string;
+  dateEnd: string;
+  officeName: string;
+  column: number;
+  row: number;
+}
+//
+export interface BookedDesk {
+  id: string;
+  bookedAt: string;
+  dateStart: string;
+  dateEnd: string;
+  user: {
+    id: string;
+    firstname: string;
+    lastname: string;
+    email: string;
+    isAdmin: boolean;
+    department: string;
+    createdAt: string;
+    updatedAt: string;
+  };
+  desk: {
+    id: string;
+    label: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    column: number;
+    row: number;
+    equipment: string[];
+    office: {
+      id: string;
+      name: string;
+      map: string;
+      columns: number;
+      rows: number;
+      createdAt: string;
+      updatedAt: string;
+    };
+  };
 }
