@@ -11,7 +11,6 @@ import UserLandingPage from "./pages/UserLandingPage.tsx";
 import OfficesListPage from "./pages/OfficesListPage.tsx";
 import OfficePage from "./pages/OfficePage.tsx";
 import SuccessBooked from "./pages/SuccessBooked.tsx";
-import DesksAllPage from "./pages/DesksAllPage.tsx";
 import UserProfilePage from "./pages/UserProfilePage.tsx";
 
 //
@@ -46,6 +45,8 @@ const router = createBrowserRouter([
   {
     path: "/sucssesfullbooked",
     element: <SuccessBooked />,
+  },
+  {
     path: "/profile",
     element: <UserProfilePage />,
   },

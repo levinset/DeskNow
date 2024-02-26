@@ -1,11 +1,8 @@
 //
 //importlibraries
-import Logo from "../Images/Logo.png";
+const Logo = "/src/Images/Logo.png";
 //
 const UserHeader = () => {
-  const imageUrl =
-    "https://i.pinimg.com/564x/de/0f/3d/de0f3d06d2c6dbf29a888cf78e4c0323.jpg";
-
   return (
     <div>
       <div className="">
@@ -72,10 +69,14 @@ const UserHeader = () => {
                 </li>
               </ul>
             </nav>
-            <div
-              className="inline-block w-12 h-12 ml-2 bg-center bg-no-repeat bg-cover rounded-full"
-              style={{ backgroundImage: `url(${imageUrl})` }}
-            ></div>
+            <div>
+              <a
+                className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:border-indigo-400 font-bold"
+                href="/profile"
+              >
+                Profile
+              </a>
+            </div>
           </div>
         </header>
       </div>
