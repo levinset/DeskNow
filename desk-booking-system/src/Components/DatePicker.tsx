@@ -12,8 +12,8 @@ const DatePicker = ({ onDatePickerChange }: DatePickerProps) => {
   const today = new Date();
   const endDate = new Date(
     today.getFullYear(),
-    today.getMonth() + 11,
-    today.getDate()
+    today.getMonth(),
+    today.getDate() + 7
   );
 
   const [value, setValue] = useState<DateValueType>({

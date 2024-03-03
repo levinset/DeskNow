@@ -76,7 +76,7 @@ export default function Login({ onSubmit }: LoginProps) {
               className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-100 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
             <p>
-              Save my
+              Save My
               <span className="text-[#6E41E2]"> Password</span>
             </p>
           </div>
