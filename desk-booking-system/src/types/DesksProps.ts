@@ -1,4 +1,5 @@
 //
+import { DateValueType } from "react-tailwindcss-datepicker";
 import { DateType } from "./DateTypes";
 //
 export interface DeskProps {
@@ -26,6 +27,8 @@ export interface DeskProps {
   // New properties for handling equipment visibility
   showEquipment: boolean; // Indicates whether equipment details are visible
   toggleEquipment: (id: string) => void; // Function to toggle equipment visibility
+  deskColor: string;
+  isDate: DateValueType;
 }
 //
 export interface DeskBookInfoProps {
@@ -37,6 +40,12 @@ export interface DeskBookInfoProps {
   endDate: DateType | undefined;
   isUserFavourite: boolean;
   equipment: ("HDMI" | "USBC" | "HeightAdjustable" | "DOCK")[];
+  fixdesk: boolean;
+  firstname: string;
+  lastname: string;
+  email: string;
+  deskId: string | null;
+  userId: string;
 }
 //
 export interface DeskBookedProps {
@@ -46,6 +55,11 @@ export interface DeskBookedProps {
   officeName: string;
   column: number;
   row: number;
+  key: string;
+  deskId: string;
+  userId: string;
+  officeId: string;
+  deskFavouriteId: string;
 }
 //
 export interface BookedDesk {
@@ -82,4 +96,38 @@ export interface BookedDesk {
       updatedAt: string;
     };
   };
+}
+
+//
+export interface DeskFavouriteProps {
+  id: string;
+  user: {
+    firstname: string;
+    lastname: string;
+    email: string;
+    department: string;
+    id: string;
+    isAdmin: boolean;
+    createdAt: string;
+    updatedAt: string;
+  };
+  desk: {
+    label: string;
+    id: string;
+    equipment: string[];
+    type: string;
+    office: {
+      name: string;
+      columns: number;
+      rows: number;
+      id: string;
+      map: string;
+      createdAt: string;
+      updatedAt: string;
+    };
+    createdAt: string;
+    updatedAt: string;
+  };
+  createdAt: string;
+  updatedAt: string;
 }

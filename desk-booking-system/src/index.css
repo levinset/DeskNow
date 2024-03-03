@@ -13,3 +13,16 @@
 html {
   @apply bg-[#C7D2FF];
 }
+
+.custom-scrollbars__content {
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.custom-scrollbars__content::-webkit-scrollbar {
+  display: none;
+}
+.swiper {
+  @apply px-12 max-sm:px-0;
+}

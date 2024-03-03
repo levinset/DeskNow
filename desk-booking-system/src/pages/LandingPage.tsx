@@ -5,8 +5,6 @@ import UserHeader from "../components/UserHeader";
 import { useGetUserProfile } from "../hooks/useGetUserProfile";
 import AdminHeader from "../components/admin/AdminHeader";
 
-//image adreess
-const heroImage = "src/Images/heroImage.png";
 //main components
 export const LandingPage = () => {
   //handle direction
@@ -23,47 +21,64 @@ export const LandingPage = () => {
       ) : (
         <Header />
       )}
-      <section className="">
-        <div className="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8 lg:py-16 ">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
-            <div className="relative h-64 overflow-hidden rounded-lg sm:h-80 lg:order-last lg:h-full">
-              <img
-                alt="Landing Page  Hero Image"
-                src={heroImage}
-                className="absolute inset-0 object-cover w-full h-full"
-              />
-            </div>
-
-            <div className="lg:py-24">
-              <h2 className="text-3xl font-bold sm:text-4xl">
-                Welcome To DeskNow
+      <section className=" bg-white max-sm:bg-[#B6EDFF] max-lg:bg-[url(src/Images/background_mobile.png)] ">
+        <div className="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8 lg:py-16 max-sm:p-0 max-sm:h-[80vh] ">
+          <div
+            className={`bg-[url(src/Images/heroImage.png)] bg-no-repeat bg-right max-lg:bg-none   `}
+            style={{ backgroundSize: "60%" }}
+          >
+            <div className="flex flex-col gap-2 px-20 lg:py-24 max-lg:w-full max-lg:px-10 ">
+              <h2 className="text-5xl font-bold  w-[18rem] max-sm:text-3xl max-lg:w-full max-sm:mt-10 ">
+                Book Your Desk,Book Your Success
               </h2>
 
-              <p className="mt-4 text-gray-600">
-                The most Efficient, User-friendly software with real-time
-                updates desk booking system in the World.
-              </p>
+              <div className="flex flex-row gap-2">
+                <div className=" bg-[#E8EEF3] w-[15%] h-[10rem] rounded-lg p-2 max-lg:w-[50%] max-sm:h-[10rem]  ">
+                  <p className=" text-[#656F77] text-sm mb-1 ">Your Desk</p>
+                  <p className="font-semibold ">
+                    Book your Desk, With Ultimate Options, Flex and Fix
+                  </p>
+                </div>
+                <div className=" bg-[#E8EEF3] w-[15%] h-[10rem] rounded-lg p-2 max-lg:w-[50%] max-sm:h-[10rem] ">
+                  <p className=" text-[#656F77] text-sm mb-1 ">Your Succes</p>
+                  <p className="font-semibold ">
+                    In the realm of digital expanse, where cyberspace dances
+                  </p>
+                </div>
+              </div>
               {data && token && data.isAdmin ? (
-                <a
-                  href="/admin/adminpanel"
-                  className="inline-block px-12 py-3 mt-8 text-sm font-medium text-white transition bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
-                >
-                  My Dashboard
-                </a>
+                <div className="flex flex-row font-semibold text-white ">
+                  <a
+                    href="/admin/adminpanel"
+                    className=" bg-[#4E6AF0] hover:bg-[#2f4cdc]  w-fit py-2 px-8 rounded-[16px] "
+                  >
+                    Admin Pannel
+                  </a>
+                </div>
               ) : data && token ? (
-                <a
-                  href="/userlanding"
-                  className="inline-block px-12 py-3 mt-8 text-sm font-medium text-white transition bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
-                >
-                  My Dashboard
-                </a>
+                <div className="flex flex-row gap-2 pl-5 font-semibold text-white max-sm:flex-col max-sm:justify-center max-sm:items-center ">
+                  <a
+                    href="/userlanding"
+                    className=" bg-[#4E6AF0] hover:bg-[#2f4cdc]  w-fit py-2 px-4 rounded-[16px] max-sm:px-6 max-sm:py-[0.6rem] "
+                  >
+                    My Dashboard
+                  </a>
+                  <a
+                    href="/profile"
+                    className=" bg-white text-black border-2 border-black hover:bg-[#4E6AF0]  w-fit py-2 px-8 rounded-[16px] hover:text-white max-sm:px-[2.2rem] max-sm:py-[0.4rem] "
+                  >
+                    My Profile
+                  </a>
+                </div>
               ) : (
-                <a
-                  href="/login"
-                  className="inline-block px-12 py-3 mt-8 text-sm font-medium text-white transition bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
-                >
-                  Get Started Today
-                </a>
+                <div className="flex flex-row pl-10 font-semibold text-white max-lg:justify-center max-lg:pl-0 ">
+                  <a
+                    href="/login"
+                    className=" bg-[#4E6AF0] hover:bg-[#2f4cdc]  w-fit py-2 px-8 rounded-[16px] max-lg:px-12  "
+                  >
+                    Sign In
+                  </a>
+                </div>
               )}
             </div>
           </div>

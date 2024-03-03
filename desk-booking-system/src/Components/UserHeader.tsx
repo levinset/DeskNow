@@ -5,7 +5,7 @@ const Logo = "/src/Images/Logo.png";
 const UserHeader = () => {
   return (
     <div>
-      <div className="">
+      <div className="py-0 border-b-4">
         <header className="flex flex-wrap items-center px-6 py-4 bg-white lg:px-16 lg:py-4">
           <div className="flex items-center justify-between flex-1">
             <img className="w-20 " src={Logo} alt="DeskNow" />
@@ -45,33 +45,24 @@ const UserHeader = () => {
                 <li>
                   <a
                     className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:border-indigo-400"
-                    href="#"
+                    href="/userlanding"
                   >
-                    Favourites
+                    Dashbord
                   </a>
                 </li>
                 <li>
                   <a
                     className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:border-indigo-400"
-                    href="#"
+                    href="/offices"
                   >
                     Booking Plan
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:border-indigo-400"
-                    href="#"
-                  >
-                    Reservation
                   </a>
                 </li>
               </ul>
             </nav>
             <div>
               <a
-                className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:border-indigo-400 font-bold"
+                className="block px-0 py-3 font-bold border-b-2 border-transparent lg:p-4 hover:border-indigo-400"
                 href="/profile"
               >
                 Profile

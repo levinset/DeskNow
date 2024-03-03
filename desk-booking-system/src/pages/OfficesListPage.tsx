@@ -1,19 +1,33 @@
 //
+import { ChangeEvent, useState } from "react";
 import OfficeListCard from "../components/OfficeListCard";
 import UserHeader from "../components/UserHeader";
 import { useGetAllOffices } from "../hooks/useGetAllOffices";
 import { OfficesProps } from "../types/OfficesProps";
+import Footer from "../components/Footer";
 
 //
 export default function OfficesListPage() {
   //queries
   const { data } = useGetAllOffices();
+  //
+  const [searchQuery, setSearchQuery] = useState("");
+  // Filter offices based on the search query
+  const filteredOffices = data
+    ? data.filter((office: OfficesProps) =>
+        office.name.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : [];
 
+  // Function to handle changes in the search query
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(event.target.value);
+  };
   //
   return (
     <div>
       <UserHeader />
-      <div className="container justify-center mx-auto pt-[10rem] gap-10 flex flex-col max-sm:px-4 ">
+      <div className="container mb-10 px-4 justify-center mx-auto pt-[10rem] gap-10 flex flex-col max-sm:px-4 max-sm:pt-2 max-sm:gap-4 ">
         <div className=" max-sm:text-center">
           <h1 className="text-4xl font-bold">Select your Office</h1>
           <h2 className="text-xl ">
@@ -21,14 +35,22 @@ export default function OfficesListPage() {
             office
           </h2>
         </div>
-        <div className="bg-[#E2E9FB] h-12 rounded-md">searchbar</div>
-        <div className="grid grid-cols-3 gap-[4rem] max-sm:grid-cols-1 ">
-          {data &&
-            data.map((office: OfficesProps) => (
-              <OfficeListCard key={office.id} {...office} />
-            ))}
+        {/* Search bar */}
+        <input
+          type="text"
+          placeholder="Search Office"
+          value={searchQuery}
+          onChange={handleSearchChange}
+          className="bg-[#E2E9FB] h-12 rounded-md px-4"
+        />
+        <div className="grid grid-cols-4 gap-[4rem] max-sm:gap-1 max-lg:grid-cols-3 max-sm:grid-cols-2 ">
+          {/* Render filtered offices */}
+          {filteredOffices.map((office: OfficesProps) => (
+            <OfficeListCard key={office.id} {...office} />
+          ))}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

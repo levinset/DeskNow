@@ -6,6 +6,7 @@ import { UserInputType } from "../types/UserInputType";
 import { useGetUserProfile } from "../hooks/useGetUserProfile";
 import { useNavigate } from "react-router-dom";
 import UserHeader from "../components/UserHeader";
+import Footer from "../components/Footer";
 
 const UserProfilePage = () => {
   const { data: userData } = useGetUserProfile();
@@ -43,7 +44,7 @@ const UserProfilePage = () => {
   return (
     <div>
       <UserHeader />
-      <div className="flex flex-col h-screen gap-5 p-10 md:flex-row">
+      <div className="flex flex-col-reverse min-h-screen gap-5 p-10 md:flex-row">
         {/* Sidebar */}
         <aside className="w-full text-white bg-white rounded-lg shadow-lg md:w-1/4">
           <div className="p-4">
@@ -188,7 +189,7 @@ const UserProfilePage = () => {
             </ul>
             <button
               onClick={handleLogout}
-              className="px-4 py-2 mt-4 text-3xl font-bold text-black uppercase hover:bg-red-600"
+              className="px-4 py-2 mt-4 text-3xl font-bold text-black uppercase hover:bg-red-400 hover:text-white"
             >
               LogOut
             </button>
@@ -198,11 +199,18 @@ const UserProfilePage = () => {
         {/* Main Content */}
         <main className="flex-1 ">
           <div className="flex items-center justify-between mb-4">
-            <h1 className="text-2xl font-bold">Welcome, User!</h1>
+            <h1 className="text-2xl font-bold max-sm:w-1/2">
+              Welcome,{" "}
+              <span className="capitalize text-violet-600 ">
+                {" "}
+                {userData && userData.firstname}
+              </span>{" "}
+              !
+            </h1>
             {!editing && (
               <button
                 onClick={handleEditClick}
-                className="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600"
+                className="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 "
               >
                 Edit Profile
               </button>
@@ -211,11 +219,24 @@ const UserProfilePage = () => {
 
           {/* Profile Section */}
           {editing ? (
-            <EditProfileForm onSubmit={onSubmit} />
+            <div>
+              <div className="flex flex-row justify-end">
+                <button
+                  onClick={() => setEditing(false)}
+                  className="px-4 py-2 text-white bg-red-500 rounded-lg"
+                >
+                  Cancel
+                </button>
+              </div>
+              <EditProfileForm onSubmit={onSubmit} />
+            </div>
           ) : (
             <UserProfileSection />
           )}
         </main>
+      </div>
+      <div className="item-end ">
+        <Footer />
       </div>
     </div>
   );
