@@ -1,34 +1,35 @@
 import React, { useState } from 'react';
-import { useCreateDesk } from '../../hooks/admin-hooks/useCreateDesk';
+import { useUpdateDesk } from '../../hooks/admin-hooks/useUpdateDesk';
 
 interface Props {
+  desk: { id: string; name: string; label: string; equipment?: string[]; };
   onSuccess: () => void;
 }
-const CreateDeskForm: React.FC<Props> = ({ onSuccess }) => {
-  const [label, setLabel] = useState('');
-  const [officeId, setOfficeId] = useState('');
-  const [equipment, setEquipment] = useState([]);
+
+const UpdateDeskForm: React.FC<Props> = ({ desk, onSuccess }) => {
+  const [label, setLabel] = useState(desk.label || '');
+  const [officeId, setOfficeId] = useState(desk.office?.id || '');
+  const [equipment, setEquipment] = useState(desk.equipment?.join(',') || '');
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
-  const createDeskMutation = useCreateDesk();
+  const updateDeskMutation = useUpdateDesk();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await createDeskMutation.mutateAsync({
+      await updateDeskMutation.mutateAsync({
+        id: desk.id, // Include desk ID in the data object
         label,
-        office: officeId, // Use the entered office ID
-        equipment,
+        officeId, // Include office ID in the data object
+        equipment: equipment.split(','),
       });
-      setLabel('');
-      setOfficeId('');
-      setEquipment([]);
-      setSuccessMessage('Desk created successfully!');
+      setSuccessMessage('Desk updated successfully!');
       onSuccess();
     } catch (error) {
-      console.error('Error creating desk:', error);
+      console.error('Error updating desk:', error);
     }
   };
+  
 
   return (
     <div>
@@ -44,12 +45,12 @@ const CreateDeskForm: React.FC<Props> = ({ onSuccess }) => {
         </div>
         <div className="mb-4">
           <label htmlFor="equipment" className="block font-bold mb-1">Equipment</label>
-          <input type="text" id="equipment" value={equipment} onChange={(e) => setEquipment(e.target.value.split(','))} className="border border-gray-300 rounded-md px-3 py-2 w-full" />
+          <input type="text" id="equipment" value={equipment} onChange={(e) => setEquipment(e.target.value)} className="border border-gray-300 rounded-md px-3 py-2 w-full" />
         </div>
-        <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md uppercase">Create Desk</button>
+        <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">Update Desk</button>
       </form>
     </div>
   );
 };
 
-export default CreateDeskForm;
+export default UpdateDeskForm;

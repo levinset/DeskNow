@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 
 interface GetAllUsersVariables {
   filterByAdmin: boolean;
-  token: string
+  
 }
 
 const getAllUsers = async ({ filterByAdmin, token }: GetAllUsersVariables & { token: string }) => {

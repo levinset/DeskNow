@@ -5,15 +5,11 @@ import PromoteUser from "./PromoteUser";
 
 
 
-
 const ManageUsers = () => {
-  //Admin token stored somewhere
-  const adminToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjllMDc3YjU2LWY5ZGYtNDI5OS05Y2IzLTA3ZDUwZjljYTIzOCIsImZpcnN0bmFtZSI6IkFkbWluIiwibGFzdG5hbWUiOiIwMSIsImVtYWlsIjoiYWRtaW4xQGNzYXcuYXQiLCJpc0FkbWluIjp0cnVlLCJkZXBhcnRtZW50IjoiQ29kaW5nU2Nob29sIiwiY3JlYXRlZEF0IjoiMjAyNC0wMi0yMlQwOTo1MDo1OC43MDNaIiwidXBkYXRlZEF0IjoiMjAyNC0wMi0yN1QxNDo0MDowNC4zNzVaIiwiaWF0IjoxNzA5MDQ5Mzk5LCJleHAiOjE3MDkxMzU3OTl9.XBSze0Qibuh_pqlJNMncI8XPsUyqv-MP7ithqVJ2jYY";
-
+ 
   const { data, isLoading, isError } = useGetAllUsers({
     filterByAdmin: false,
-    token: adminToken,
+    
   });
 
   useEffect(() => {
@@ -50,7 +46,7 @@ const ManageUsers = () => {
               <span className="font-bold">{user.firstname} {user.lastname}</span> - {user.email}
             </div>
             {!user.isAdmin && (
-              <PromoteUser userId={user.id} adminToken={adminToken} />
+              <PromoteUser userId={user.id} />
             )}
           </li>
         ))}

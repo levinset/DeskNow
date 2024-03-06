@@ -9,7 +9,36 @@ interface Comment {
   comment: string;
   commentedAt: string;
   updatedAt: string;
-  user: User;
+  user: {
+    id: string;
+    firstname: string;
+    lastname: string;
+    email: string;
+    isAdmin: boolean;
+    department: string;
+    createdAt: string;
+    updatedAt: string;
+  };
+
+  desk: {
+    id: string;
+    label: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    column: number;
+    row: number;
+    equipment: string[];
+    office: {
+      id: string;
+      name: string;
+      map: string;
+      columns: number;
+      rows: number;
+      createdAt: string;
+      updatedAt: string;
+      },
+  };
   
   
 }
@@ -43,7 +72,7 @@ const ManageComments = () => {
       alert('Comment deleted successfully!');
     } catch (error) {
       console.error('Error deleting comment:', error);
-      // Handle error, show error message, etc.
+      
     }
   };
 
@@ -76,14 +105,19 @@ const ManageComments = () => {
       <ul className="grid grid-cols-1 gap-4 max-h-96 overflow-y-auto">
         {data.map((comment: Comment) => (
           <li key={comment.id} className="bg-white shadow-md rounded-lg p-4">
-            <p className="text-lg font-semibold">{comment.user.firstname} {comment.user.lastname}</p>
-            <p className="text-gray-600">Comment:     {comment.comment}</p>
-            <p className="text-gray-600">Commented At: {comment.commentedAt}</p>
+            <p className="text-lg font-semibold">Name: {comment.user.firstname} {comment.user.lastname}</p>
+            <p className="text-lg font-semibold">Email: {comment.user.email}</p>
+            <p className='text-lg font-semibold'>Department: {comment.user.department}</p>
+            <p className='text-lg font-semibold'>Desk: {comment.desk.label}</p>
+            <p className='text-lg font-semibold'>Desk ID :{comment.desk.id}</p>
+            <p className="text-lg font-semibold">Equipment: {comment.desk.equipment}</p>
+            <p className="text-lg font-semibold">Comment:     {comment.comment}</p>
+            <p className="text-lg font-semibold">Commented At: {comment.commentedAt}</p>
             <button 
               onClick={() => handleDeleteComment(comment.id)} 
-              className="bg-red-500 text-black px-3 py-1 rounded-md shadow-md bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75"
+              className="bg-red-500 text-black px-3 py-1 rounded-md shadow-md bg-gradient-to-r uppercase from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75"
             >
-              Delete
+              Delete Comment
             </button>
             
           </li>

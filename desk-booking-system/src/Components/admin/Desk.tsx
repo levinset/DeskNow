@@ -1,9 +1,10 @@
 //  Desk Component
 import React from 'react';
+import { DeskProps } from '../../types/DesksProps';
 
 
 
-const Desk = ({ desk }) => {
+const Desk: React.FC<{ desk: DeskProps }> = ({ desk }) => {
   return (
     <div className="bg-white shadow-md rounded-lg p-6 mb-4">
       <div className="flex flex-wrap -mx-2">

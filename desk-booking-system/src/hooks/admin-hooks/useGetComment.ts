@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 
-const getComments = async (page) => {
+type PageType = number;
+
+const getComments = async (page: PageType) => {
   const url = 'https://deskbooking.dev.webundsoehne.com/api/comments';
   try {
     const token = localStorage.getItem('accessToken');
@@ -20,7 +22,7 @@ const getComments = async (page) => {
   }
 };
 
-export const useGetComments = (page) => {
+export const useGetComments = (page: PageType) => {
   return useQuery({
     queryKey: ['comments', page],
     queryFn: () => getComments(page),

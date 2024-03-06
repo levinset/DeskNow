@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const PromoteUser = ({ userId }) => {
+interface UserProps {
+  userId: string;
+    
+}
+
+const PromoteUser: React.FC<UserProps> = ({ userId }) => {
   const adminToken = localStorage.getItem("accessToken"); // Retrieve access token from local storage
 
   const [isLoading, setIsLoading] = useState(false);
@@ -34,7 +39,7 @@ const PromoteUser = ({ userId }) => {
 
   return (
     <div>
-      <button onClick={handlePromoteUser} disabled={isLoading} className="group inline-block rounded bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75">
+      <button onClick={handlePromoteUser} disabled={isLoading} className="group inline-block rounded bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75 uppercase">
         {isLoading ? "Promoting..." : "Promote User"}
       </button>
       {isError && <div>Error promoting user</div>}
