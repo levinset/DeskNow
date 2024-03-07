@@ -17,7 +17,7 @@ import { AxiosError } from "axios";
 // Routes
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/DeskNow",
     element: <LandingPage />,
   },
   {
