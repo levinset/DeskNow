@@ -38,7 +38,7 @@ export default function RegisterPage() {
     <div>
       <Header />
       <div className="flex flex-row justify-center h-full bg-[#C7D2FF] ">
-        {!successMessage && <Register onSubmit={onSubmit} />}
+        {<Register onSubmit={onSubmit} />}
         {successMessage && <SuccessRegister />}
       </div>
       <div className="mt-10 ">

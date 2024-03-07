@@ -1,6 +1,9 @@
-//
-//importlibraries
-const Logo = "/src/Images/Logo.png";
+//import libraries and components
+import { Link } from "react-router-dom";
+import Logo from "/images/Logo.png";
+//base Url
+const baseUrl = "/DeskNow";
+
 //
 const AdminHeader = () => {
   return (
@@ -36,12 +39,12 @@ const AdminHeader = () => {
               <ul className="items-center justify-between pt-4 text-base text-gray-700 lg:flex lg:pt-0"></ul>
             </nav>
             <div>
-              <a
+              <Link
                 className="block px-0 py-3 font-bold border-b-2 border-transparent lg:p-4 hover:border-indigo-400"
-                href="/admin/adminpanel"
+                to={`${baseUrl}/admin/adminpanel`}
               >
                 Admin Panel
-              </a>
+              </Link>
             </div>
           </div>
         </header>

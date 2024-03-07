@@ -22,13 +22,13 @@ export default function SuccessBooked() {
             </h2>
             <div className="flex flex-row gap-2 mt-4">
               <Link
-                to="/userlanding"
+                to="/DeskNow/userlanding"
                 className="px-4 py-2 bg-white rounded-full text-[#486AAE] font-semibold hover:text-white hover:bg-[#486AAE] "
               >
                 Dashbord
               </Link>
               <Link
-                to="/profile"
+                to="/DeskNow/profile"
                 className="text-xl font-semibold text-white underline hover:text-[#486AAE] "
               >
                 My Profile

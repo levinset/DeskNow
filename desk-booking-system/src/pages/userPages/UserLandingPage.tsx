@@ -8,7 +8,7 @@ import BookedView from "../../components/user/dashboard/bookedDesk/BookedView";
 import UserWelcome from "../../components/user/dashboard/userWelcome/UserWelcome";
 
 //landing pahe image url
-const imageUrl = "src/Images/frame.png";
+import Frame from "/images/Frame.png";
 
 //main componet
 export default function UserLandingPage() {
@@ -33,7 +33,7 @@ export default function UserLandingPage() {
               <UserWelcome />
             </div>
             <div className=" w-[30%] max-sm:w-[60%] max-sm:hidden max-lg:hidden  ">
-              <img src={imageUrl} alt="user landing page image" />
+              <img src={Frame} alt="user landing page image" />
             </div>
           </div>
           <div className="container flex flex-row items-center justify-center gap-4 mx-auto ">

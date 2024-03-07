@@ -62,7 +62,7 @@ export default function FavouriteCard(props: DeskBookedProps) {
 
   const bookFavouriteDesk = () => {
     const { officeId, deskId } = props;
-    navigate(`/office/${officeId}`, { state: { deskId: deskId } });
+    navigate(`/DeskNow/office/${officeId}`, { state: { deskId: deskId } });
   };
 
   return (

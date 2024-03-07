@@ -1,5 +1,9 @@
 //import libaries and components
+import { Link } from "react-router-dom";
 import { useGetUserProfile } from "../../hooks/userHooks/users/useGetUserProfile";
+//
+//base Url
+const baseUrl = "/DeskNow";
 //
 export default function LandingPageMoto() {
   //handle direction
@@ -27,42 +31,42 @@ export default function LandingPageMoto() {
       </div>
       {data && token && data.isAdmin ? (
         <div className="flex flex-row font-semibold text-white ">
-          <a
-            href="/admin/adminpanel"
+          <Link
+            to={`${baseUrl}/admin/adminpanel`}
             className=" bg-[#4E6AF0] hover:bg-[#2f4cdc]  w-fit py-2 px-8 rounded-[16px] "
           >
             Admin Pannel
-          </a>
+          </Link>
         </div>
       ) : data && token ? (
         <div className="flex flex-row gap-2 pl-5 font-semibold text-white max-sm:flex-col max-sm:justify-center max-sm:items-center ">
-          <a
-            href="/userlanding"
+          <Link
+            to={`${baseUrl}/userlanding`}
             className=" bg-[#4E6AF0] hover:bg-[#2f4cdc]  w-fit py-2 px-4 rounded-[16px] max-sm:px-6 max-sm:py-[0.6rem] "
           >
             My Dashboard
-          </a>
-          <a
-            href="/profile"
+          </Link>
+          <Link
+            to={`${baseUrl}/profile`}
             className=" bg-white text-black border-2 border-black hover:bg-[#4E6AF0]  w-fit py-2 px-8 rounded-[16px] hover:text-white max-sm:px-[2.2rem] max-sm:py-[0.4rem] "
           >
             My Profile
-          </a>
+          </Link>
         </div>
       ) : (
         <div className="flex flex-row gap-2 font-semibold text-white pl-11 max-sm:flex-col max-sm:justify-center max-sm:items-center max-lg:pl-0 ">
-          <a
-            href="/login"
+          <Link
+            to={`${baseUrl}/login`}
             className=" bg-[#4E6AF0] hover:bg-[#2f4cdc]  w-fit py-2 px-8 rounded-[16px] max-lg:px-12  "
           >
             Sign In
-          </a>
-          <a
-            href="/register"
+          </Link>
+          <Link
+            to={`${baseUrl}/register`}
             className=" bg-white text-black border-2 border-black hover:bg-[#4E6AF0]  w-fit py-2 px-8 rounded-[16px] hover:text-white max-sm:px-[2.7rem] max-sm:py-[0.4rem] "
           >
             Register
-          </a>
+          </Link>
         </div>
       )}
       <div className="hidden ">

@@ -26,3 +26,15 @@ html {
 .swiper {
   @apply px-12 max-sm:px-0;
 }
+.bg-manage {
+  background-image: url("../../../public/images/heroImageMobile.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 1024px) {
+  .bg-manage {
+    background-image: url("../../../public/images/heroImage.webp");
+  }
+}

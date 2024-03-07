@@ -143,7 +143,7 @@ export default function OfficePage() {
 
         addDesk(deskData, {
           onSuccess: () => {
-            navigate("/sucssefullbooked");
+            navigate("/DeskNow/sucssefullbooked");
           },
           onError: (bookingError: CustomError) => {
             setErrorMessage(bookingError?.response?.data?.message);
@@ -164,13 +164,13 @@ export default function OfficePage() {
 
   //handle fix request
   const handleFixRequest = () => {
-    if (selectedDate && selectedDeskId) {
+    if (selectedDeskId) {
       const fixDeskData = {
         desk: selectedDeskId,
       };
       fixRequest(fixDeskData, {
         onSuccess: () => {
-          navigate("/sucssesfullbooked");
+          navigate("/DeskNow/sucssefullbooked");
         },
         onError: (fixBookingError: CustomError) => {
           setErrorMessage(fixBookingError?.response?.data?.message);
@@ -261,6 +261,7 @@ export default function OfficePage() {
     SetFixBookingModale(!fixBookingModale);
     setErrorMessage("");
   };
+  //
 
   //
   return (

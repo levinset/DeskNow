@@ -16,7 +16,7 @@ export default function SuccessRegister() {
           <div className="flex flex-col items-center justify-center gap-4 font-semibold">
             <h2 className="text-xl">Sign in with your Email and Password</h2>
             <Link
-              to="/login"
+              to="/DeskNow/login"
               className="bg-[#6E41E2] w-full h-12 rounded-md text-white flex justify-center items-center"
             >
               Sign In

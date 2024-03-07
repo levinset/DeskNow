@@ -10,7 +10,7 @@ export default function OfficeListCard(props: OfficesProps) {
   //navigate data to officepage
   const navigate = useNavigate();
   const handleShow = () => {
-    navigate(`/office/${props.id}`, { state: props });
+    navigate(`/DeskNow/office/${props.id}`, { state: props });
   };
   //all seats
   const allSeats = (props.rows ?? 0) + (props.columns ?? 0);

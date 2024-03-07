@@ -4,6 +4,10 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
+//
+//base Url
+const baseUrl = "/DeskNow";
+
 //types
 import { UserLoginType } from "../../types/UserLoginType";
 interface LoginProps {
@@ -35,9 +39,9 @@ export default function Login({ onSubmit }: LoginProps) {
           <h1 className="text-4xl font-bold">Sign In</h1>
         </div>
         <div className="flex flex-row gap-4">
-          <Link to="/register">Registeration</Link>
+          <Link to={`${baseUrl}/register`}>Registeration</Link>
           <div className="flex flex-col gap-3">
-            <Link className="" to="/login">
+            <Link className="" to={`${baseUrl}/login`}>
               Sign In
             </Link>
             <p className=" border-[1.5px] border-[#6E41E2] "></p>
@@ -89,7 +93,7 @@ export default function Login({ onSubmit }: LoginProps) {
             Sign In
           </button>
           <div>
-            <Link className="text-[#6E41E2] " to="/register">
+            <Link className="text-[#6E41E2] " to="/Desknow/register">
               Registeration
             </Link>
           </div>

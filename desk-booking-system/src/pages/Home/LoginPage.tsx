@@ -18,7 +18,7 @@ export default function LoginPage() {
     try {
       await loginUsers(data, {
         onSuccess: () => {
-          navigate("/loginloading");
+          navigate("/DeskNow/loginloading");
         },
         onError: (error) => {
           console.log(error.message);

@@ -1,6 +1,10 @@
-//
 //importlibraries
-const Logo = "/src/Images/Logo.png";
+import { Link } from "react-router-dom";
+import Logo from "/images/Logo.png";
+
+//base Url
+const baseUrl = "/DeskNow";
+
 //
 const UserHeader = () => {
   return (
@@ -35,38 +39,38 @@ const UserHeader = () => {
             <nav>
               <ul className="items-center justify-between pt-4 text-base text-gray-700 lg:flex lg:pt-0">
                 <li>
-                  <a
+                  <Link
                     className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:border-indigo-400"
-                    href="/"
+                    to={`${baseUrl}/`}
                   >
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:border-indigo-400"
-                    href="/userlanding"
+                    to={`${baseUrl}/userlanding`}
                   >
                     Dashbord
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:border-indigo-400"
-                    href="/offices"
+                    to={`${baseUrl}/offices`}
                   >
                     Booking Plan
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </nav>
             <div>
-              <a
+              <Link
                 className="block px-0 py-3 font-bold border-b-2 border-transparent lg:p-4 hover:border-indigo-400"
-                href="/profile"
+                to={`${baseUrl}/profile`}
               >
                 Profile
-              </a>
+              </Link>
             </div>
           </div>
         </header>

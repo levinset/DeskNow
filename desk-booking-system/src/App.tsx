@@ -17,43 +17,43 @@ import { AxiosError } from "axios";
 // Routes
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "DeskNow",
     element: <LandingPage />,
   },
   {
-    path: "/login",
+    path: "DeskNow/login",
     element: <LoginPage />,
   },
   {
-    path: "/loginloading",
+    path: "DeskNow/loginloading",
     element: <LoginLoading />,
   },
   {
-    path: "/register",
+    path: "DeskNow/register",
     element: <RegisterPage />,
   },
   {
-    path: "/userlanding",
+    path: "DeskNow/userlanding",
     element: <UserLandingPage />,
   },
   {
-    path: "/offices",
+    path: "DeskNow/offices",
     element: <OfficesListPage />,
   },
   {
-    path: "/office/:LocateOfficeId",
+    path: "DeskNow/office/:LocateOfficeId",
     element: <OfficePage />,
   },
   {
-    path: "/sucssefullbooked",
+    path: "DeskNow/sucssefullbooked",
     element: <SuccessBooked />,
   },
   {
-    path: "/profile",
+    path: "DeskNow/profile",
     element: <UserProfilePage />,
   },
   {
-    path: "/admin/adminpanel",
+    path: "DeskNow/admin/adminpanel",
     element: <AdminPanel />,
   },
 ]);

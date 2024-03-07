@@ -18,7 +18,7 @@ export default function UserWelcome() {
         </h1>
         <h2>you are working from office today.</h2>
         <Link
-          to="/offices"
+          to="/DeskNow/offices"
           className=" bg-[#2647C8] px-4 py-2 rounded-3xl text-white w-[10rem] font-semibold "
         >
           Book a Desk

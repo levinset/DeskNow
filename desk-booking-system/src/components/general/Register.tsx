@@ -11,7 +11,8 @@ import { useGetAllDepartments } from "../../hooks/userHooks/getEnums/useGetAllDe
 interface RegisterProps {
   onSubmit: SubmitHandler<UserInputType>;
 }
-
+//base Url
+const baseUrl = "/DeskNow";
 //
 //user shema input error handller
 const schema = yup.object().shape({
@@ -65,12 +66,12 @@ export default function Register({ onSubmit }: RegisterProps) {
         </div>
         <div className="flex flex-row gap-4">
           <div className="flex flex-col gap-3">
-            <Link className="" to="/register">
+            <Link className="" to={`${baseUrl}/register`}>
               Registration
             </Link>
             <p className=" border-[1.5px] border-[#6E41E2] "></p>
           </div>
-          <Link to="/login">Sign In</Link>
+          <Link to={`${baseUrl}/login`}>Sign In</Link>
         </div>
       </div>
       <hr className="" />
@@ -180,7 +181,7 @@ export default function Register({ onSubmit }: RegisterProps) {
           >
             Registration
           </button>
-          <Link className="text-[#6E41E2] " to="/login">
+          <Link className="text-[#6E41E2] " to="/DeskNow/login">
             Sign in
           </Link>
         </div>

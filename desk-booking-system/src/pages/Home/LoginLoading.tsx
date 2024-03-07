@@ -12,9 +12,9 @@ export default function LoginLoading() {
   useEffect(() => {
     if (!isLoading && !isError) {
       if (data && data.isAdmin) {
-        navigate("/admin/adminpanel");
+        navigate("/DeskNow/admin/adminpanel");
       } else {
-        navigate("/userlanding");
+        navigate("/DeskNow/userlanding");
       }
     }
   }, [data, isLoading, isError, navigate]);

@@ -87,7 +87,7 @@ const UserProfilePage = () => {
     queryClient.invalidateQueries({
       queryKey: ["userprofile"],
     });
-    navigate("/");
+    navigate("/DeskNow");
   };
 
   return (

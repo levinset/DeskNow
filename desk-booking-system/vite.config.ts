@@ -6,5 +6,5 @@ export default defineConfig({
   build: {
     sourcemap: true, // Enable source maps for production build
   },
-  base: "/",
+  base: "/DeskNow",
 });
