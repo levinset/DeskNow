@@ -6,14 +6,14 @@ interface Props {
 }
 
 const CreateOfficeForm: React.FC<Props> = ({ onSuccess }) => {
-  const [name, setName] = useState("");
-  const [columns, setColumns] = useState("");
-  const [rows, setRows] = useState("");
+  const [name, setName] = useState<string>("");
+  const [columns, setColumns] = useState<string>("");
+  const [rows, setRows] = useState<string>("");
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const createOfficeMutation = useCreateOffice();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await createOfficeMutation.mutateAsync({

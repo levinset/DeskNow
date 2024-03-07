@@ -1,10 +1,10 @@
-import axios from 'axios';
-import { useQuery } from '@tanstack/react-query';
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
-const getComments = async (page) => {
-  const url = 'https://deskbooking.dev.webundsoehne.com/api/comments';
+const getComments = async (page: number) => {
+  const url = "https://deskbooking.dev.webundsoehne.com/api/comments";
   try {
-    const token = localStorage.getItem('accessToken');
+    const token = localStorage.getItem("accessToken");
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -16,13 +16,13 @@ const getComments = async (page) => {
     const response = await axios.get(url, config);
     return response.data;
   } catch (error) {
-    throw new Error('Error getting comments');
+    throw new Error("Error getting comments");
   }
 };
 
-export const useGetComments = (page) => {
+export const useGetComments = (page: number) => {
   return useQuery({
-    queryKey: ['comments', page],
+    queryKey: ["comments", page],
     queryFn: () => getComments(page),
   });
 };

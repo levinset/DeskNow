@@ -6,34 +6,35 @@ interface ApprovalVariables {
 }
 
 const approveFixDeskRequest = async ({ requestId }: ApprovalVariables) => {
-    try {
-      const adminToken = localStorage.getItem("adminToken");
-      if (!adminToken) throw new Error("Admin token not found in local storage");
-  
-      const response = await axios.put(
-        `https://deskbooking.dev.webundsoehne.com/api/admin/fix-desk-requests/${requestId}`,
-        { status: 'approved' },
-        {
-          headers: {
-            Authorization: `Bearer ${adminToken}`,
-          },
-        }
-      );
-      return response.data;
-    } catch (error) {
-      throw new Error("Error approving fix desk request: " + error.message);
-    }
-  };
-  
+  try {
+    const adminToken = localStorage.getItem("adminToken");
+    if (!adminToken) throw new Error("Admin token not found in local storage");
 
-const rejectFixDeskRequest = async ({ requestId }: ApprovalVariables): Promise<void> => {
+    const response = await axios.put(
+      `https://deskbooking.dev.webundsoehne.com/api/admin/fix-desk-requests/${requestId}`,
+      { status: "approved" },
+      {
+        headers: {
+          Authorization: `Bearer ${adminToken}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error("Error approving fix desk request: " + error);
+  }
+};
+
+const rejectFixDeskRequest = async ({
+  requestId,
+}: ApprovalVariables): Promise<void> => {
   try {
     const adminToken = localStorage.getItem("adminToken");
     if (!adminToken) throw new Error("Admin token not found in local storage");
 
     await axios.put(
       `https://deskbooking.dev.webundsoehne.com/api/admin/fix-desk-requests/${requestId}`,
-      { status: 'rejected' },
+      { status: "rejected" },
       {
         headers: {
           Authorization: `Bearer ${adminToken}`,
@@ -52,7 +53,7 @@ export const useApproveFixDeskRequest = () => {
     mutationFn: approveFixDeskRequest,
     onSuccess: (_, variables) => {
       console.log(`Fix desk request approved with ID: ${variables.requestId}`);
-      queryClient.invalidateQueries({ queryKey: ["fixDeskRequests"]});
+      queryClient.invalidateQueries({ queryKey: ["fixDeskRequests"] });
     },
   });
 };
@@ -64,7 +65,7 @@ export const useRejectFixDeskRequest = () => {
     mutationFn: rejectFixDeskRequest,
     onSuccess: (_, variables) => {
       console.log(`Fix desk request rejected with ID: ${variables.requestId}`);
-      queryClient.invalidateQueries({ queryKey: ["fixDeskRequests"]});
+      queryClient.invalidateQueries({ queryKey: ["fixDeskRequests"] });
     },
   });
 };
