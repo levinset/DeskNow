@@ -2,7 +2,7 @@
   "name": "desk-booking-system",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://levinset.github.io/DeskNow",
+  "homepage": "https://levinset.github.io/DeskNow/",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
