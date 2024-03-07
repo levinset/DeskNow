@@ -77,6 +77,7 @@ const Favourites = (props: SliderProps) => {
                   row={desk.desk.row}
                   userId={data.id}
                   officeId={desk.desk.office.id}
+                  deskCommentId={desk.id}
                 />
               </SwiperSlide>
             ))}

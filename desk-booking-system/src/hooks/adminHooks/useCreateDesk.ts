@@ -1,22 +1,20 @@
-import axios from 'axios';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import axios from "axios";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 interface DeskFormData {
   label: string;
-  type: string;
-  column: number;
-  row: number;
   equipment?: string[];
+  office: string;
 }
 
 const createDesk = async (formData: DeskFormData) => {
-  const adminToken = localStorage.getItem('accessToken');
+  const adminToken = localStorage.getItem("accessToken");
   if (!adminToken) {
-    throw new Error('No admin token found');
+    throw new Error("No admin token found");
   }
 
   const response = await axios.post(
-    'https://deskbooking.dev.webundsoehne.com/api/admin/desks',
+    "https://deskbooking.dev.webundsoehne.com/api/admin/desks",
     formData,
     {
       headers: {
@@ -31,12 +29,11 @@ const createDesk = async (formData: DeskFormData) => {
 export const useCreateDesk = () => {
   const queryClient = useQueryClient();
 
-
   const mutation = useMutation({
     mutationFn: createDesk,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['desks'] });
-      alert('Desk created successfully!');
+      queryClient.invalidateQueries({ queryKey: ["desks"] });
+      alert("Desk created successfully!");
     },
   });
 

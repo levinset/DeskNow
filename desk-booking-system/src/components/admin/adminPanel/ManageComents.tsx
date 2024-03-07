@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useGetComments } from "../../../hooks/adminHooks/useGetComment";
 import axios from "axios";
 
@@ -8,11 +7,14 @@ interface Comment {
   comment: string;
   commentedAt: string;
   updatedAt: string;
-  user: User;
+  user: {
+    firstname: string;
+    lastname: string;
+  };
 }
 
-const ManageComments = () => {
-  const [page, setPage] = useState(0);
+const ManageComments: React.FC = () => {
+  const [page, setPage] = useState<number>(0);
   const { data, isLoading, isError, refetch } = useGetComments(page);
 
   const nextPage = () => {
@@ -26,6 +28,9 @@ const ManageComments = () => {
   const handleDeleteComment = async (commentId: string) => {
     try {
       const token = localStorage.getItem("accessToken");
+      if (!token) {
+        throw new Error("No access token found");
+      }
       await axios.delete(
         `https://deskbooking.dev.webundsoehne.com/api/comments/${commentId}`,
         {
@@ -52,26 +57,26 @@ const ManageComments = () => {
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-8">
-      <h2 className="text-2xl font-bold mb-4">Manage Comments</h2>
+    <div className="max-w-3xl px-4 py-8 mx-auto">
+      <h2 className="mb-4 text-2xl font-bold">Manage Comments</h2>
       <div className="flex justify-between mb-4">
         <button
           onClick={prevPage}
           disabled={page === 0}
-          className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-md disabled:opacity-50"
+          className="px-4 py-2 text-white bg-blue-500 rounded-md shadow-md disabled:opacity-50"
         >
           Previous
         </button>
         <button
           onClick={nextPage}
-          className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-md"
+          className="px-4 py-2 text-white bg-blue-500 rounded-md shadow-md"
         >
           Next
         </button>
       </div>
-      <ul className="grid grid-cols-1 gap-4 max-h-96 overflow-y-auto">
+      <ul className="grid grid-cols-1 gap-4 overflow-y-auto max-h-96">
         {data.map((comment: Comment) => (
-          <li key={comment.id} className="bg-white shadow-md rounded-lg p-4">
+          <li key={comment.id} className="p-4 bg-white rounded-lg shadow-md">
             <p className="text-lg font-semibold">
               {comment.user.firstname} {comment.user.lastname}
             </p>

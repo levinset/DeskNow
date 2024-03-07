@@ -39,7 +39,7 @@ export default function UserLandingPage() {
           <div className="container flex flex-row items-center justify-center gap-4 mx-auto ">
             <div className="flex flex-col justify-center mx-auto ">
               <div className="w-full max-sm:flex max-sm:justify-center max-sm:m-auto">
-                <Favourites />
+                <Favourites slide={4} width="" />
               </div>
             </div>
           </div>

@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import { useUpdateOffice } from "../../../hooks/adminHooks/useUpdateOffice";
 
+interface Office {
+  id: string;
+  name: string;
+  columns: number;
+  rows: number;
+}
+
 interface Props {
-  office: { id: string; name: string; columns: number; rows: number };
+  office: Office;
   onSuccess: () => void;
 }
 
@@ -14,7 +21,7 @@ const UpdateOfficeForm: React.FC<Props> = ({ office, onSuccess }) => {
 
   const updateOfficeMutation = useUpdateOffice();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await updateOfficeMutation.mutateAsync({
@@ -33,11 +40,11 @@ const UpdateOfficeForm: React.FC<Props> = ({ office, onSuccess }) => {
   return (
     <div>
       {successMessage && (
-        <div className="text-green-500 mb-4">{successMessage}</div>
+        <div className="mb-4 text-green-500">{successMessage}</div>
       )}
       <form onSubmit={handleSubmit} className="max-w-sm mx-auto">
         <div className="mb-4">
-          <label htmlFor="name" className="block font-bold mb-1">
+          <label htmlFor="name" className="block mb-1 font-bold">
             Office Name
           </label>
           <input
@@ -46,11 +53,11 @@ const UpdateOfficeForm: React.FC<Props> = ({ office, onSuccess }) => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            className="border border-gray-300 rounded-md px-3 py-2 w-full"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="columns" className="block font-bold mb-1">
+          <label htmlFor="columns" className="block mb-1 font-bold">
             Number of Columns
           </label>
           <input
@@ -59,11 +66,11 @@ const UpdateOfficeForm: React.FC<Props> = ({ office, onSuccess }) => {
             value={columns}
             onChange={(e) => setColumns(e.target.value)}
             required
-            className="border border-gray-300 rounded-md px-3 py-2 w-full"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="rows" className="block font-bold mb-1">
+          <label htmlFor="rows" className="block mb-1 font-bold">
             Number of Rows
           </label>
           <input
@@ -72,12 +79,12 @@ const UpdateOfficeForm: React.FC<Props> = ({ office, onSuccess }) => {
             value={rows}
             onChange={(e) => setRows(e.target.value)}
             required
-            className="border border-gray-300 rounded-md px-3 py-2 w-full"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md"
           />
         </div>
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
+          className="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600"
         >
           Update Office
         </button>
