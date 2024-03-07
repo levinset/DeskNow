@@ -1,17 +1,17 @@
 import { useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import LandingPage from "./pages/LandingPage";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
-import UserLandingPage from "./pages/UserLandingPage";
-import OfficesListPage from "./pages/OfficesListPage";
-import OfficePage from "./pages/OfficePage";
-import SuccessBooked from "./pages/SuccessBooked";
-import UserProfilePage from "./pages/UserProfilePage";
-import AdminPanel from "./pages/admin/AdminPanel";
-import LoginLoading from "./pages/LoginLoading";
+import LandingPage from "./pages/Home/LandingPage";
+import LoginPage from "./pages/Home/LoginPage";
+import RegisterPage from "./pages/Home/RegisterPage";
+import UserLandingPage from "./pages/userPages/UserLandingPage";
+import OfficesListPage from "./pages/userPages/OfficesListPage";
+import OfficePage from "./pages/userPages/OfficePage";
+import SuccessBooked from "./pages/userPages/SuccessBooked";
+import UserProfilePage from "./pages/userPages/UserProfilePage";
+import AdminPanel from "./pages/adminPages/AdminPanel";
+import LoginLoading from "./pages/Home/LoginLoading";
 import "./index.css";
-import { useTokenRefresh } from "./hooks/useTokenRefresh";
+import { useTokenRefresh } from "./hooks/userHooks/users/useTokenRefresh";
 import { AxiosError } from "axios";
 
 // Routes

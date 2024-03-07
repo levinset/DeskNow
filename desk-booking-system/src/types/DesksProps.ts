@@ -60,6 +60,7 @@ export interface DeskBookedProps {
   userId: string;
   officeId: string;
   deskFavouriteId: string;
+  deskCommentId: string;
 }
 //
 export interface BookedDesk {
