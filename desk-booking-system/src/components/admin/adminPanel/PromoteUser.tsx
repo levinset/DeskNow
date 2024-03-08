@@ -41,7 +41,7 @@ const PromoteUser: React.FC<PromoteUserProps> = ({ userId }) => {
       <button
         onClick={handlePromoteUser}
         disabled={isLoading}
-        className="group inline-block rounded bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75"
+        className="group inline-block px-2 rounded-lg bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75"
       >
         {isLoading ? "Promoting..." : "Promote User"}
       </button>

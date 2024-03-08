@@ -4,10 +4,33 @@ import { useDeleteDesk } from "./../../../hooks/adminHooks/useDeleteDesk";
 import CreateDeskFormDesk from "./CreateDeskFormDesk";
 import Desk from "./Desk";
 import UpdateDeskForm from "./UpdateDeskForm";
-import { BookedDesk } from "../../../types/DesksProps";
 import SearchBar from "./SearchBar";
+//types
+// Assuming DesksProps looks something like this
+interface DesksProps {
+  desk?: BookedDesk;
+}
 
-const ManageDesks: React.FC = () => {
+// Ensure that BookedDesk includes all the required properties
+interface BookedDesk {
+  id: string;
+  label: string;
+  type: string;
+  createdAt: string;
+  updatedAt: string;
+  column: number;
+  row: number;
+  equipment: string[];
+  office: {
+    id: string;
+  };
+  bookedAt: string; // Add missing properties
+  dateStart: string;
+  dateEnd: string;
+  user: string;
+}
+
+const ManageDesks: React.FC<DesksProps> = () => {
   const { data: allDesks, isLoading, isError } = useGetAllDesks();
   const [showCreateForm, setShowCreateForm] = useState(false);
   const deleteDeskMutation = useDeleteDesk();

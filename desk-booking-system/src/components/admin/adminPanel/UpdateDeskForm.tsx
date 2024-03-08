@@ -1,10 +1,25 @@
 import React, { useState } from "react";
 import { useUpdateDesk } from "../../../hooks/adminHooks/useUpdateDesk";
-import { BookedDesk } from "../../../types/DesksProps";
-
-//
+//tyoes
+interface BookedDesk {
+  id: string;
+  label: string;
+  type: string;
+  createdAt: string;
+  updatedAt: string;
+  column: number;
+  row: number;
+  equipment: string[];
+  office: {
+    id: string;
+  };
+  bookedAt: string;
+  dateStart: string;
+  dateEnd: string;
+  user: string;
+}
 interface UpdateDeskFormProps {
-  desk: BookedDesk; // Define the type of desk prop
+  desk: BookedDesk; // Define the type of the desk prop
   onSuccess: () => void; // Define the type of onSuccess prop
 }
 

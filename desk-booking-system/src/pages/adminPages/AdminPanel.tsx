@@ -90,9 +90,10 @@ const AdminPanel = () => {
             Menu
           </button>
           <aside
-            className={`w-full h-full ${
-              isMenuOpen ? "block" : "hidden"
-            } md:block text-white bg-white rounded-lg shadow-lg`}
+            onClick={toggleMenu}
+            className={`md:w-72 w-full h-full ${
+              isMenuOpen ? "translate-x-0" : "-translate-x-full"
+            } md:translate-x-0 transition-transform duration-300 md:block text-white bg-white rounded-lg shadow-lg max-sm:absolute max-sm:w-[80%]`}
           >
             <div className="p-4">
               <h2 className="text-2xl font-bold text-black">Admin Dashboard</h2>
@@ -254,7 +255,7 @@ const AdminPanel = () => {
           </aside>
         </div>
         {/* Main Content */}
-        <main className="flex-1">
+        <main className="flex-1 max-lg:ml-4">
           <div className="flex items-center justify-between mb-4">
             <h1 className="text-2xl font-bold">
               Welcome,{" "}

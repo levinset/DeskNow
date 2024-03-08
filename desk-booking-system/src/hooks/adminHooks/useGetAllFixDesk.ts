@@ -2,7 +2,8 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
 const getAllFixDeskRequests = async () => {
-  const url = "https://deskbooking.dev.webundsoehne.com/api/admin/fix-desk-requests";
+  const url =
+    "https://deskbooking.dev.webundsoehne.com/api/admin/fix-desk-requests";
   try {
     const adminToken = localStorage.getItem("accessToken");
     const response = await axios.get(url, {
@@ -10,7 +11,6 @@ const getAllFixDeskRequests = async () => {
         Authorization: `Bearer ${adminToken}`, // Fallback to adminToken if accessToken is not available
       },
     });
-    console.log("FixDesk requests data:", response.data); // Log the fetched dataaj
     return response.data;
   } catch (error) {
     throw new Error("Error fetching FixDesk requests");

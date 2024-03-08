@@ -12,6 +12,7 @@ const baseUrl = "/DeskNow";
 import { UserLoginType } from "../../types/UserLoginType";
 interface LoginProps {
   onSubmit: SubmitHandler<UserLoginType>;
+  userError: string | undefined;
 }
 //
 //user shema input erro handller
@@ -21,7 +22,7 @@ const schema = yup.object().shape({
 });
 
 //main component
-export default function Login({ onSubmit }: LoginProps) {
+export default function Login({ onSubmit, userError }: LoginProps) {
   //react form with yup resolver
   const {
     register,
@@ -32,6 +33,7 @@ export default function Login({ onSubmit }: LoginProps) {
   const handleLogin = () => {
     handleSubmit(onSubmit)();
   };
+
   return (
     <div className="  w-[40vw] h-fit rounded-md shadow-xl bg-gray-50  max-sm:w-full max-sm:h-fit mt-10 max-sm:mt-4 ">
       <div className="flex flex-col gap-6 p-8 pb-0">
@@ -71,6 +73,13 @@ export default function Login({ onSubmit }: LoginProps) {
               <p className="text-red-500 ">{errors.password.message}</p>
             )}
           </form>
+          <div>
+            {userError && (
+              <p className="text-red-400 ">
+                Your Username(Email) or Password is wrong
+              </p>
+            )}
+          </div>
         </div>
         <div className="flex flex-row items-center mt-4 mb-8 max-sm:my-0 ">
           <div className="flex flex-row gap-2">

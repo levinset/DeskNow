@@ -7,9 +7,9 @@ const baseUrl = "/DeskNow";
 //
 const AdminHeader = () => {
   return (
-    <div>
+    <div className="sticky top-0 z-50 ">
       <div className="border-b-2 ">
-        <header className="flex flex-wrap items-center px-6 py-4 bg-white lg:px-16 lg:py-4">
+        <header className="flex flex-wrap items-center px-6 py-0 bg-white lg:px-16 lg:py-0">
           <div className="flex items-center justify-between flex-1">
             <img className="w-20 " src={Logo} alt="DeskNow" />
           </div>

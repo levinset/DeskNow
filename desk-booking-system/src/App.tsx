@@ -13,6 +13,7 @@ import LoginLoading from "./pages/Home/LoginLoading";
 import "./index.css";
 import { useTokenRefresh } from "./hooks/userHooks/users/useTokenRefresh";
 import { AxiosError } from "axios";
+import PrivacyPolicy from "./pages/Home/PrivacyPolicy";
 
 // Routes
 const router = createBrowserRouter([
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
   {
     path: "DeskNow/admin/adminpanel",
     element: <AdminPanel />,
+  },
+  {
+    path: "DeskNow/privacy",
+    element: <PrivacyPolicy />,
   },
 ]);
 

@@ -8,11 +8,11 @@ const baseUrl = "/DeskNow";
 //
 const UserHeader = () => {
   return (
-    <div>
-      <div className="py-0 border-b-4">
-        <header className="flex flex-wrap items-center px-6 py-4 bg-white lg:px-16 lg:py-4">
+    <div className="sticky top-0 z-50 ">
+      <div className="py-0 border-b-4 ">
+        <header className="flex flex-wrap items-center px-6 py-4 bg-white lg:px-16 lg:py-0">
           <div className="flex items-center justify-between flex-1">
-            <img className="w-20 " src={Logo} alt="DeskNow" />
+            <img className="w-20 2xl:w-[6rem] " src={Logo} alt="DeskNow" />
           </div>
 
           <label
@@ -37,7 +37,7 @@ const UserHeader = () => {
             id="menu"
           >
             <nav>
-              <ul className="items-center justify-between pt-4 text-base text-gray-700 lg:flex lg:pt-0">
+              <ul className="items-center justify-between pt-4 text-base text-gray-700 2xl:font-bold 2xl:text-2xl lg:flex lg:pt-0">
                 <li>
                   <Link
                     className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:border-indigo-400"
@@ -66,7 +66,7 @@ const UserHeader = () => {
             </nav>
             <div>
               <Link
-                className="block px-0 py-3 font-bold border-b-2 border-transparent lg:p-4 hover:border-indigo-400"
+                className="block px-0 py-3 font-bold border-b-2 border-transparent lg:p-4 hover:border-indigo-400 2xl:text-2xl"
                 to={`${baseUrl}/profile`}
               >
                 Profile

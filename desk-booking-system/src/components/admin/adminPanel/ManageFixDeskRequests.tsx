@@ -4,7 +4,14 @@ import SearchBar from "./SearchBar";
 import { useGetAllFixDesk } from "./../../../hooks/adminHooks/useGetAllFixDesk";
 
 interface RequestProps {
-  desk: { id: string };
+  desk: {
+    id: string;
+    label: string;
+    name: string;
+    office: {
+      name: string;
+    };
+  };
   user: {
     id: string;
     firstname: string;
@@ -95,12 +102,20 @@ const ManageFixDeskRequests = () => {
               {request.desk.id}
             </p>
             <p>
+              <strong>Office Name: </strong>
+              {request.desk.office.name}
+            </p>
+            <p>
+              <strong>Desk Lable: </strong>
+              {request.desk.label}
+            </p>
+            <p>
               <strong>Date of Booking: </strong>
               {request.createdAt}
             </p>
             <button
               onClick={() => handleUpdateStatus(request.id)}
-              className="group inline-block rounded bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75 uppercase"
+              className=" px-2 group inline-block rounded bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75 uppercase"
             >
               Update Status
             </button>

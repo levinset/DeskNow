@@ -16,7 +16,6 @@ import { useFixRequest } from "../../hooks/userHooks/fixrequest/useFixRequest";
 import { useGetUserProfile } from "../../hooks/userHooks/users/useGetUserProfile";
 import { useGetOfficebyId } from "../../hooks/userHooks/offices/useGetOfficebyId";
 import Footer from "../../components/general/Footer";
-import Modal from "react-modal";
 
 //types
 import { DateValueType } from "../../types/DateTypes";
@@ -173,6 +172,7 @@ export default function OfficePage() {
       fixRequest(fixDeskData, {
         onSuccess: () => {
           setShowSuccessModal(true);
+          SetFixBookingModale(false);
         },
         onError: (fixBookingError: CustomError) => {
           setErrorMessage(fixBookingError?.response?.data?.message);
@@ -493,15 +493,28 @@ export default function OfficePage() {
       <div className="mt-[10rem] ">
         <Footer />
       </div>
-      <Modal
-        isOpen={showSuccessModal}
-        onRequestClose={() => setShowSuccessModal(false)}
-      >
+      {showSuccessModal && (
         <div>
-          <h2>Booking Successful!</h2>
-          <button onClick={() => setShowSuccessModal(false)}>Close</button>
+          <div className="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full bg-black bg-opacity-50 ">
+            <div className="p-8 rounded-lg bg-slate-50">
+              <div className="flex justify-end ">
+                <button
+                  className="mb-4 text-xl text-red-400"
+                  onClick={() => {
+                    setShowSuccessModal(false);
+                  }}
+                >
+                  {" "}
+                  <GiCancel />{" "}
+                </button>
+              </div>
+              <h2 className="text-xl font-semibold">
+                Fix Desk sent Successfully!
+              </h2>
+            </div>
+          </div>
         </div>
-      </Modal>
+      )}
     </div>
   );
 }

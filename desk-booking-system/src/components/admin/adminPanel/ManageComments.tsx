@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useGetComments } from "../../../hooks/adminHooks/useGetComment";
 import axios from "axios";
+import { useGetAllDesks } from "./../../../hooks/userHooks/desks/useGetAllDesks";
+import { DeskProps } from "../../../types/DesksProps";
 
 interface Comment {
   id: string;
@@ -10,20 +12,52 @@ interface Comment {
   user: {
     firstname: string;
     lastname: string;
-    email: string; // Add email field to the user object
-    department: string; // Add department field to the user object
+    email: string;
+    department: string;
   };
   desk: {
     label: string;
     id: string;
-    equipment: string[]; // Assuming equipment is an array of strings
+    equipment: string[];
+    // Add new properties to desk object
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    column: number;
+    row: number;
+    office: {
+      id: string;
+      name: string;
+      map: string;
+      columns: number;
+      rows: number;
+      createdAt: string;
+      updatedAt: string;
+    };
   };
 }
 
 const ManageComments: React.FC = () => {
   const [page, setPage] = useState<number>(0);
-  const [filteredComments, setFilteredComments] = useState<Comment[]>([]); // State for filtered comments
+  const [filteredComments, setFilteredComments] = useState<Comment[]>([]);
   const { data, isLoading, isError, refetch } = useGetComments(page);
+  const { data: deskData } = useGetAllDesks();
+  //
+  useEffect(() => {
+    if (data && deskData) {
+      // Update desk object in comments with office name
+      const updatedComments = data.map((comment: Comment) => {
+        const desk = deskData.find(
+          (desk: DeskProps) => desk.id === comment.desk.id
+        );
+        if (desk) {
+          return { ...comment, desk: { ...desk, office: desk.office } };
+        }
+        return comment;
+      });
+      setFilteredComments(updatedComments);
+    }
+  }, [data, deskData]);
 
   const nextPage = () => {
     setPage(page + 1);
@@ -47,22 +81,18 @@ const ManageComments: React.FC = () => {
           },
         }
       );
-      // refetch the comments to update the list
       refetch();
       alert("Comment deleted successfully!");
     } catch (error) {
       console.error("Error deleting comment:", error);
-      // Handle error, show error message, etc.
     }
   };
 
-  // Handle search functionality
   const handleSearch = (searchTerm: string) => {
     if (!searchTerm.trim()) {
-      setFilteredComments([]); // Clear filtered comments if search term is empty
+      setFilteredComments([]);
       return;
     }
-    // Filter comments based on search term
     const filtered = data.filter((comment: Comment) => {
       return (
         comment.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -82,14 +112,24 @@ const ManageComments: React.FC = () => {
         comment.desk.equipment.some((item) =>
           item.toLowerCase().includes(searchTerm.toLowerCase())
         ) ||
-        comment.commentedAt.toLowerCase().includes(searchTerm.toLowerCase())
+        comment.commentedAt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        comment.desk.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        comment.desk.createdAt
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
+        comment.desk.updatedAt
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
+        // Check office name for search
+        (comment.desk.office.name &&
+          comment.desk.office.name
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase()))
       );
     });
-
     setFilteredComments(filtered);
   };
 
-  // Determine comments to render based on whether search is active
   const commentsToRender = filteredComments.length ? filteredComments : data;
 
   if (isLoading) {
@@ -99,6 +139,7 @@ const ManageComments: React.FC = () => {
   if (isError) {
     return <div>Error fetching comments</div>;
   }
+  //
 
   return (
     <div className="max-w-3xl px-4 py-8 mx-auto">
@@ -128,10 +169,23 @@ const ManageComments: React.FC = () => {
         {commentsToRender.map((comment: Comment) => (
           <li key={comment.id} className="p-4 bg-white rounded-lg shadow-md">
             <p className="text-lg font-semibold">
-              {comment.user.firstname} {comment.user.lastname}
+              User Name: {comment.user.firstname} {comment.user.lastname}
             </p>
+            <p className="text-lg font-semibold">
+              Department: {comment.user.department}
+            </p>
+            {/* Check if office exists before accessing its properties */}
+            {comment.desk.office && (
+              <p className="font-semibold text-gray-600">
+                Office Name: {comment.desk.office.name}
+              </p>
+            )}
             <p className="text-gray-600">Comment: {comment.comment}</p>
             <p className="text-gray-600">Commented At: {comment.commentedAt}</p>
+            <p className="text-gray-600">Desk lable: {comment.desk.label}</p>
+            <p className="text-gray-600">Desk Type: {comment.desk.type}</p>
+            <p className="text-gray-600">Desk Id: {comment.desk.id}</p>
+
             <button
               onClick={() => handleDeleteComment(comment.id)}
               className="bg-red-500 text-black px-3 py-1 rounded-md shadow-md bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75"

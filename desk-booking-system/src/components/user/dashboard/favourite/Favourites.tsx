@@ -51,9 +51,18 @@ const Favourites = (props: SliderProps) => {
           slidesPerView={1}
           //navigation
           breakpoints={{
-            500: { slidesPerView: 2 },
-            768: { slidesPerView: 3 },
-            1025: { slidesPerView: props.slide || 4 },
+            // For screens up to 767px (mobile)
+            767: {
+              slidesPerView: 2,
+            },
+            // For screens from 768px to 1024px (tablets)
+            1024: {
+              slidesPerView: props.slide || 3, // Adjust the number of slides per view as needed
+            },
+            // For screens from 1025px and above (desktop)
+            1025: {
+              slidesPerView: props.slide || 4, // Adjust the number of slides per view as needed
+            },
           }}
           pagination={{ clickable: true }}
           autoplay={false}

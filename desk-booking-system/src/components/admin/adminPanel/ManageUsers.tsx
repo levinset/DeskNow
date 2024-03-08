@@ -70,7 +70,12 @@ const ManageUsers: React.FC = () => {
               - {user.email}
             </div>
             {!user.isAdmin && <PromoteUser userId={user.id} />}
-            <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
+            <button
+              className="px-2 mt-2 bg-red-400 rounded-lg"
+              onClick={() => handleDeleteUser(user.id)}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
