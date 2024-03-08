@@ -26,7 +26,7 @@ export default function OfficesListPage() {
   return (
     <div>
       <UserHeader />
-      <div className="container mb-10 px-4 justify-center mx-auto pt-[10rem] gap-10 flex flex-col max-sm:px-4 max-sm:pt-2 max-sm:gap-4 ">
+      <div className="container mb-10 px-4 justify-center mx-auto pt-[3rem] gap-10 flex flex-col max-sm:px-4 max-sm:pt-2 max-sm:gap-4 ">
         <div className=" max-sm:text-center">
           <h1 className="text-4xl font-bold">Select your Office</h1>
           <h2 className="text-xl ">

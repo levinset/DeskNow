@@ -9,9 +9,6 @@ import DeskBookInfoCard from "../../components/user/booking/DeskBookInfoCard";
 import { GiCancel } from "react-icons/gi";
 import { useNavigate, useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-
-//types
-import { DateValueType } from "../../types/DateTypes";
 import { useAddDesk } from "../../hooks/userHooks/bookings/useAddDesk";
 import { useGetAllBookingForDesks } from "../../hooks/userHooks/bookings/useGetAllBookingForDesks";
 import DeskGuid from "../../components/user/booking/DeskGuid";
@@ -19,6 +16,10 @@ import { useFixRequest } from "../../hooks/userHooks/fixrequest/useFixRequest";
 import { useGetUserProfile } from "../../hooks/userHooks/users/useGetUserProfile";
 import { useGetOfficebyId } from "../../hooks/userHooks/offices/useGetOfficebyId";
 import Footer from "../../components/general/Footer";
+import Modal from "react-modal";
+
+//types
+import { DateValueType } from "../../types/DateTypes";
 
 interface CustomError {
   response?: {
@@ -49,6 +50,7 @@ export default function OfficePage() {
   >(null);
   const [fixdeskProb, setfixdeskPropb] = useState(true);
   const [officeId, setOfficeId] = useState("");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   //get office id from browser
   const { LocateOfficeId } = useParams<{ LocateOfficeId: string }>();
   useEffect(() => {
@@ -170,7 +172,7 @@ export default function OfficePage() {
       };
       fixRequest(fixDeskData, {
         onSuccess: () => {
-          navigate("/DeskNow/sucssefullbooked");
+          setShowSuccessModal(true);
         },
         onError: (fixBookingError: CustomError) => {
           setErrorMessage(fixBookingError?.response?.data?.message);
@@ -491,6 +493,15 @@ export default function OfficePage() {
       <div className="mt-[10rem] ">
         <Footer />
       </div>
+      <Modal
+        isOpen={showSuccessModal}
+        onRequestClose={() => setShowSuccessModal(false)}
+      >
+        <div>
+          <h2>Booking Successful!</h2>
+          <button onClick={() => setShowSuccessModal(false)}>Close</button>
+        </div>
+      </Modal>
     </div>
   );
 }

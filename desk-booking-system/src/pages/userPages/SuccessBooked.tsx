@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import UserHeader from "../../components/user/home/UserHeader";
 
 //
-const ImageUrl = "/src/images/finishimage.png";
+import finishimage from "/images/finishimage.png";
 
 //
 export default function SuccessBooked() {
@@ -36,7 +36,7 @@ export default function SuccessBooked() {
             </div>
           </div>
           <div className="w-1/2 max-sm:w-full ">
-            <img src={ImageUrl} alt="" />
+            <img src={finishimage} alt="" />
           </div>
         </div>
       </div>
