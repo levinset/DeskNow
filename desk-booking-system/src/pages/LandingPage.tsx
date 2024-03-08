@@ -1,10 +1,10 @@
 //import libraries and components
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import UserHeader from "../components/UserHeader";
-import { useGetUserProfile } from "../hooks/useGetUserProfile";
-import AdminHeader from "../components/admin/AdminHeader";
-import CookiePrivacyModal from "../components/CookiePrivacyModal";
+import Header from "../components/general/Header";
+import Footer from "../components/general/Footer";
+import UserHeader from "../components/user/home/UserHeader";
+import AdminHeader from "../components/admin/home/AdminHeader";
+import CookiePrivacyModal from "../Components/user/booking/CookiePrivacyModal";
+import { useGetUserProfile } from "./../hooks/userHooks/users/useGetUserProfile";
 
 //main components
 export const LandingPage = () => {
@@ -85,7 +85,7 @@ export const LandingPage = () => {
           </div>
         </div>
       </section>
-      <CookiePrivacyModal/>
+      <CookiePrivacyModal />
       <Footer />
     </div>
   );

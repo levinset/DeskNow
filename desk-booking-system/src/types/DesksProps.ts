@@ -22,8 +22,6 @@ export interface DeskProps {
   };
   nextBooking: null;
   isUserFavourite: boolean;
-  
-  
 
   // New properties for handling equipment visibility
   showEquipment: boolean; // Indicates whether equipment details are visible
@@ -48,6 +46,12 @@ export interface DeskBookedProps {
   officeName: string;
   column: number;
   row: number;
+  key: string;
+  deskId: string;
+  userId: string;
+  officeId: string;
+  deskFavouriteId: string;
+  deskCommentId: string;
 }
 //
 export interface BookedDesk {
@@ -76,7 +80,7 @@ export interface BookedDesk {
   };
   nextBooking: null;
   isUserFavourite: boolean;
-  
+
   user: {
     id: string;
     firstname: string;
@@ -86,7 +90,6 @@ export interface BookedDesk {
     department: string;
     createdAt: string;
     updatedAt: string;
-    
   };
   desk: {
     id: string;
@@ -106,7 +109,6 @@ export interface BookedDesk {
       createdAt: string;
       updatedAt: string;
     };
-
   };
   // New properties for handling equipment visibility
   showEquipment: boolean; // Indicates whether equipment details are visible

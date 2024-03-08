@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { useCreateDesk } from "../../hooks/adminHooks/useCreateDesk";
+import { useCreateDesk } from "../../../hooks/adminHooks/useCreateDesk";
 
 interface Props {
   onSuccess: () => void;
 }
-const CreateDeskForm: React.FC<Props> = ({ onSuccess }) => {
-  const [label, setLabel] = useState("");
-  const [officeId, setOfficeId] = useState("");
+
+const CreateDeskFormDesk: React.FC<Props> = ({ onSuccess }) => {
+  const [label, setLabel] = useState<string>("");
+  const [officeId, setOfficeId] = useState<string>("");
   const [equipment, setEquipment] = useState<string[]>([]);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
@@ -69,14 +70,14 @@ const CreateDeskForm: React.FC<Props> = ({ onSuccess }) => {
           <input
             type="text"
             id="equipment"
-            value={equipment}
+            value={equipment.join(",")}
             onChange={(e) => setEquipment(e.target.value.split(","))}
             className="w-full px-3 py-2 border border-gray-300 rounded-md"
           />
         </div>
         <button
           type="submit"
-          className="px-4 py-2 text-white uppercase bg-blue-500 rounded-md hover:bg-blue-600"
+          className="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600"
         >
           Create Desk
         </button>
@@ -85,4 +86,4 @@ const CreateDeskForm: React.FC<Props> = ({ onSuccess }) => {
   );
 };
 
-export default CreateDeskForm;
+export default CreateDeskFormDesk;
