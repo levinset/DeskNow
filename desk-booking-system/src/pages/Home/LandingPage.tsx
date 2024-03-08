@@ -6,7 +6,7 @@ import LandingPageView from "./../../components/general/LandingPageView";
 //main components
 export const LandingPage = () => {
   return (
-    <div>
+    <div className="">
       <HeaderView />
       <LandingPageView />
       <Footer />

@@ -16,13 +16,13 @@ export default function LandingPageMoto() {
         Book Your Desk,Book Your Success
       </h2>
       <div className="flex flex-row gap-2">
-        <div className=" bg-[#E8EEF3] w-[15%] h-[10rem] rounded-lg p-2 max-lg:w-[50%] max-sm:h-[10rem]  ">
+        <div className=" bg-[#E8EEF3] w-[15%] h-fit rounded-lg p-2 max-lg:w-[50%] max-sm:h-[10rem]  ">
           <p className=" text-[#656F77] text-sm mb-1 ">Your Desk</p>
           <p className="font-semibold ">
             Book your Desk, With Ultimate Options, Flex and Fix
           </p>
         </div>
-        <div className=" bg-[#E8EEF3] w-[15%] h-[10rem] rounded-lg p-2 max-lg:w-[50%] max-sm:h-[10rem] ">
+        <div className=" bg-[#E8EEF3] w-[15%] h-fit rounded-lg p-2 max-lg:w-[50%] max-sm:h-[10rem] ">
           <p className=" text-[#656F77] text-sm mb-1 ">Your Succes</p>
           <p className="font-semibold ">
             In the realm of digital expanse, where cyberspace dances
