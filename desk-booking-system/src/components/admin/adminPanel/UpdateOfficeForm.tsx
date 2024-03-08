@@ -4,8 +4,8 @@ import { useUpdateOffice } from "../../../hooks/adminHooks/useUpdateOffice";
 interface Office {
   id: string;
   name: string;
-  columns: number;
-  rows: number;
+  columns?: number | undefined; // Make columns optional
+  rows?: number | undefined;
 }
 
 interface Props {
@@ -14,9 +14,9 @@ interface Props {
 }
 
 const UpdateOfficeForm: React.FC<Props> = ({ office, onSuccess }) => {
-  const [name, setName] = useState(office.name);
-  const [columns, setColumns] = useState(office.columns.toString());
-  const [rows, setRows] = useState(office.rows.toString());
+  const [name, setName] = useState<string>(office.name);
+  const [columns, setColumns] = useState<string>(office.columns.toString());
+  const [rows, setRows] = useState<string>(office.rows.toString());
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const updateOfficeMutation = useUpdateOffice();

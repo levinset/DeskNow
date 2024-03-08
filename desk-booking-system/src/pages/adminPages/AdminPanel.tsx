@@ -8,11 +8,11 @@ import { useNavigate } from "react-router-dom";
 
 // Components
 import AdminHeader from "../../components/admin/home/AdminHeader";
-import ManageComments from "../../Components/admin/adminPanel/ManageComments";
-import ManageFixDeskRequests from "../../Components/admin/adminPanel/ManageFixDeskRequests";
-import ManageOffices from "../../Components/admin/adminPanel/ManageOfiices";
-import ManageDesks from "../../Components/admin/adminPanel/ManageDesks";
-import ManageUsers from "../../Components/admin/adminPanel/ManageUsers";
+import ManageComments from "../../components/admin/adminPanel/ManageComments";
+import ManageFixDeskRequests from "../../components/admin/adminPanel/ManageFixDeskRequests";
+import ManageOffices from "../../components/admin/adminPanel/ManageOfiices";
+import ManageDesks from "../../components/admin/adminPanel/ManageDesks";
+import ManageUsers from "../../components/admin/adminPanel/ManageUsers";
 
 const AdminPanel = () => {
   const { data: userData } = useGetUserProfile();

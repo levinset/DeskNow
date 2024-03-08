@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { useGetAllOffices } from "..//../hooks/admin-hooks/useGetAllOffices";
+import { useState } from "react";
 import CreateOfficeForm from "./CreateOfficeForm";
-import { useDeleteOffice } from "../../hooks/admin-hooks/useDeleteOffice";
 import UpdateOfficeForm from "./UpdateOfficeForm";
-import { OfficesProps } from "../../types/OfficesProps";
 import SearchBar from "./SearchBar";
+import { useGetAllOffices } from "./../../../hooks/userHooks/offices/useGetAllOffices";
+import { useDeleteOffice } from "./../../../hooks/adminHooks/useDeleteOffice";
+import { OfficesProps } from "./../../../types/OfficesProps";
 
 const ManageOffices = () => {
   const { data: allOffices, isLoading, isError } = useGetAllOffices();
@@ -69,13 +69,13 @@ const ManageOffices = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-8">
-      <h2 className="text-2xl font-bold mb-4">Manage Offices</h2>
+    <div className="max-w-3xl px-4 py-8 mx-auto">
+      <h2 className="mb-4 text-2xl font-bold">Manage Offices</h2>
       <SearchBar onSearch={handleSearch} />
-      <ul className="grid grid-cols-1 gap-4 max-h-96 overflow-y-auto">
+      <ul className="grid grid-cols-1 gap-4 overflow-y-auto max-h-96">
         {(filteredOffices.length ? filteredOffices : allOffices).map(
           (office: OfficesProps) => (
-            <li key={office.id} className="bg-gray-100 rounded-md p-4 mb-4">
+            <li key={office.id} className="p-4 mb-4 bg-gray-100 rounded-md">
               <p className="font-bold">Office ID: {office.id}</p>
               <p className="mb-2">Office Name: {office.name}</p>
               <p className="mb-2">Office Map: {office.map}</p>
@@ -103,13 +103,13 @@ const ManageOffices = () => {
       {/* Render the UpdateOfficeForm if an office is selected for update */}
       {selectedOffice && (
         <div>
-          <h2 className="text-center font-bold uppercase ">Update Office</h2>
+          <h2 className="font-bold text-center uppercase ">Update Office</h2>
           <UpdateOfficeForm office={selectedOffice} onSuccess={handleSuccess} />
         </div>
       )}
       <button
         onClick={() => setIsCreating(true)}
-        className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md mt-4 uppercase"
+        className="px-4 py-2 mt-4 text-white uppercase bg-green-500 rounded-md hover:bg-green-600"
       >
         Create Office
       </button>

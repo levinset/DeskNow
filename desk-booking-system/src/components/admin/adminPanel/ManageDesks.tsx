@@ -4,7 +4,7 @@ import { useDeleteDesk } from "./../../../hooks/adminHooks/useDeleteDesk";
 import CreateDeskFormDesk from "./CreateDeskFormDesk";
 import Desk from "./Desk";
 import UpdateDeskForm from "./UpdateDeskForm";
-import { BookedDesk } from "../../types/DesksProps";
+import { BookedDesk } from "../../../types/DesksProps";
 import SearchBar from "./SearchBar";
 
 const ManageDesks: React.FC = () => {

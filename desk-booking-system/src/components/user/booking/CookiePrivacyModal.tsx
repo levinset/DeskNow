@@ -1,35 +1,33 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const CookiePrivacyModal = () => {
   const [isOpen, setIsOpen] = useState(true);
+
+  useEffect(() => {
+    console.log("useEffect is running");
+    const cookiesAccepted = localStorage.getItem("cookiesAccepted");
+    if (cookiesAccepted !== "true") {
+      setIsOpen(true);
+    }
+  }, []);
+
   const [acceptedCookies, setAcceptedCookies] = useState(false);
 
-  // Function to handle accepting cookies
   const handleAcceptCookies = () => {
     setAcceptedCookies(true);
     setIsOpen(false);
     localStorage.setItem("cookiesAccepted", "true");
   };
 
-  // Function to handle closing the modal
   const handleClose = () => {
     setIsOpen(false);
-    localStorage.setItem("cookiesAccepted", acceptedCookies.toString()); // Store user's choice in local storage
+    localStorage.setItem("cookiesAccepted", acceptedCookies.toString());
   };
-
-  // Effect to check if user previously accepted cookies
-  useEffect(() => {
-    const cookiesAccepted = localStorage.getItem("cookiesAccepted");
-    if (cookiesAccepted === "true") {
-      setAcceptedCookies(true);
-      setIsOpen(false);
-    }
-  }, []);
 
   return (
     <>
-      {isOpen && !acceptedCookies && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50 max-sm:px-2">
           <div className="p-8 bg-white rounded-md shadow-md">
             <h2 className="mb-4 text-2xl font-bold">Cookie & Privacy Policy</h2>
             <p>

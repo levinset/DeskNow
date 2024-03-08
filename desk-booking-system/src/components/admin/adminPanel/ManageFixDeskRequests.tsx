@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { useGetAllFixDesk } from "../../hooks/admin-hooks/useGetAllFixDesk";
+import { useState } from "react";
 import UpdateFixDeskRequestForm from "./UpdateFixDeskRequestForm";
 import SearchBar from "./SearchBar";
+import { useGetAllFixDesk } from "./../../../hooks/adminHooks/useGetAllFixDesk";
 
 interface RequestProps {
   desk: { id: string };
@@ -70,15 +70,15 @@ const ManageFixDeskRequests = () => {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <h2 className="text-2xl font-bold mb-4">Manage FixDesk Requests</h2>
+      <h2 className="mb-4 text-2xl font-bold">Manage FixDesk Requests</h2>
       <SearchBar onSearch={handleSearch} />
 
-      <ul className="grid grid-cols-1 gap-4 max-h-96 overflow-y-auto">
+      <ul className="grid grid-cols-1 gap-4 overflow-y-auto max-h-96">
         {(filteredFixDeskRequests.length
           ? filteredFixDeskRequests
           : allFixDeskRequests
         ).map((request: RequestProps) => (
-          <li key={request.id} className="bg-white shadow-md rounded-lg p-4">
+          <li key={request.id} className="p-4 bg-white rounded-lg shadow-md">
             <p>
               <strong>User ID:</strong> {request.user.id}
             </p>
