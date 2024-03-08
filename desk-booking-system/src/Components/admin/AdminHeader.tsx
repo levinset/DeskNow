@@ -11,7 +11,6 @@ const AdminHeader = () => {
             <img className="w-20 " src={Logo} alt="DeskNow" />
           </div>
 
-
           <div
             className="hidden w-full lg:flex lg:items-center lg:w-auto"
             id="menu"

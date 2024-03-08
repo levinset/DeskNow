@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import UserHeader from "../components/UserHeader";
 import { useGetUserProfile } from "../hooks/useGetUserProfile";
 import AdminHeader from "../components/admin/AdminHeader";
+import CookiePrivacyModal from "../components/CookiePrivacyModal";
 
 //main components
 export const LandingPage = () => {
@@ -84,6 +85,7 @@ export const LandingPage = () => {
           </div>
         </div>
       </section>
+      <CookiePrivacyModal/>
       <Footer />
     </div>
   );

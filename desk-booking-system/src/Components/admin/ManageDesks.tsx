@@ -4,16 +4,39 @@ import { useDeleteDesk } from "../../hooks/admin-hooks/useDeleteDesk";
 import CreateDeskForm from "./CreateDeskForm";
 import Desk from "./Desk";
 import UpdateDeskForm from "./UpdateDeskForm";
-import { DeskProps } from "../../types/DesksProps";
+import { BookedDesk } from "../../types/DesksProps";
+import SearchBar from "./SearchBar";
 
-const ManageDesks = () => {
-  const { data, isLoading, isError } = useGetAllDesks();
+const ManageDesks: React.FC = () => {
+  const { data: allDesks, isLoading, isError } = useGetAllDesks();
   const [showCreateForm, setShowCreateForm] = useState(false);
   const deleteDeskMutation = useDeleteDesk();
-  const [selectedDesk, setSelectedDesk] = useState(null);
+  const [selectedDesk, setSelectedDesk] = useState<BookedDesk | null>(null);
+  const [filteredDesks, setFilteredDesks] = useState<BookedDesk[]>([]); // Define the type for filteredDesks
+
+  const handleSearch = (searchTerm: string) => {
+    if (!searchTerm.trim()) {
+      setFilteredDesks([]);
+      return;
+    }
+
+    const filtered = allDesks.filter((desk: BookedDesk) => {
+      return (
+        desk.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        desk.label.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        desk.equipment.some((item) =>
+          item.toLowerCase().includes(searchTerm.toLowerCase())
+        ) ||
+        desk.row.toString().includes(searchTerm) ||
+        desk.column.toString().includes(searchTerm)
+      );
+    });
+
+    setFilteredDesks(filtered);
+  };
 
   // Update Desk
-  const handleUpdateDesk = (desk: DeskProps) => {
+  const handleUpdateDesk = (desk: BookedDesk) => {
     setSelectedDesk(desk);
   };
 
@@ -36,7 +59,7 @@ const ManageDesks = () => {
   };
 
   const handleSuccess = () => {
-    // Handle success action here
+    // Handle success action
     setShowCreateForm(false);
   };
 
@@ -51,26 +74,29 @@ const ManageDesks = () => {
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
       <h2 className="text-xl font-bold mb-4">Manage Desks</h2>
+      <SearchBar onSearch={handleSearch} />
       <ul className="grid grid-cols-1 gap-4 max-h-96 overflow-y-auto">
-        {data.map((desk: DeskProps) => (
-          <li key={desk.id} className="bg-gray-100 rounded-md p-4 mb-4">
-            <Desk desk={desk} />
-            <div className="flex space-x-2">
-              <button
-                onClick={() => handleUpdateDesk(desk)}
-                className="uppercase bg-red-500 text-black px-3 py-1 rounded-md shadow-md bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75"
-              >
-                Update
-              </button>
-              <button
-                onClick={() => handleDelete(desk.id)}
-                className="uppercase bg-red-500 text-black px-3 py-1 rounded-md shadow-md bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75"
-              >
-                Delete
-              </button>
-            </div>
-          </li>
-        ))}
+        {(filteredDesks.length ? filteredDesks : allDesks).map(
+          (desk: BookedDesk) => (
+            <li key={desk.id} className="bg-gray-100 rounded-md p-4 mb-4">
+              <Desk desk={desk} />
+              <div className="flex space-x-2">
+                <button
+                  onClick={() => handleUpdateDesk(desk)}
+                  className="uppercase bg-red-500 text-black px-3 py-1 rounded-md shadow-md bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75"
+                >
+                  Update
+                </button>
+                <button
+                  onClick={() => handleDelete(desk.id)}
+                  className="uppercase bg-red-500 text-black px-3 py-1 rounded-md shadow-md bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75"
+                >
+                  Delete
+                </button>
+              </div>
+            </li>
+          )
+        )}
       </ul>
 
       {selectedDesk && (

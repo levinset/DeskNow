@@ -1,5 +1,4 @@
 //
-import { DateValueType } from "react-tailwindcss-datepicker";
 import { DateType } from "./DateTypes";
 //
 export interface DeskProps {
@@ -23,12 +22,12 @@ export interface DeskProps {
   };
   nextBooking: null;
   isUserFavourite: boolean;
+  
+  
 
   // New properties for handling equipment visibility
   showEquipment: boolean; // Indicates whether equipment details are visible
   toggleEquipment: (id: string) => void; // Function to toggle equipment visibility
-  deskColor: string;
-  isDate: DateValueType;
 }
 //
 export interface DeskBookInfoProps {
@@ -40,12 +39,6 @@ export interface DeskBookInfoProps {
   endDate: DateType | undefined;
   isUserFavourite: boolean;
   equipment: ("HDMI" | "USBC" | "HeightAdjustable" | "DOCK")[];
-  fixdesk: boolean;
-  firstname: string;
-  lastname: string;
-  email: string;
-  deskId: string | null;
-  userId: string;
 }
 //
 export interface DeskBookedProps {
@@ -55,11 +48,6 @@ export interface DeskBookedProps {
   officeName: string;
   column: number;
   row: number;
-  key: string;
-  deskId: string;
-  userId: string;
-  officeId: string;
-  deskFavouriteId: string;
 }
 //
 export interface BookedDesk {
@@ -67,6 +55,28 @@ export interface BookedDesk {
   bookedAt: string;
   dateStart: string;
   dateEnd: string;
+  equipment: ("HDMI" | "USBC" | "HeightAdjustable" | "DOCK")[];
+  onSuccess: () => void;
+  label: string;
+  row: number;
+  column: number;
+  department: string;
+  createdAt: string;
+  updatedAt: string;
+  type: string;
+  fixdesk: null | string;
+  office: {
+    id: string;
+    name: string;
+    map: string;
+    columns: number;
+    rows: number;
+    createdAt: string;
+    updatedAt: string;
+  };
+  nextBooking: null;
+  isUserFavourite: boolean;
+  
   user: {
     id: string;
     firstname: string;
@@ -76,6 +86,7 @@ export interface BookedDesk {
     department: string;
     createdAt: string;
     updatedAt: string;
+    
   };
   desk: {
     id: string;
@@ -95,39 +106,9 @@ export interface BookedDesk {
       createdAt: string;
       updatedAt: string;
     };
-  };
-}
 
-//
-export interface DeskFavouriteProps {
-  id: string;
-  user: {
-    firstname: string;
-    lastname: string;
-    email: string;
-    department: string;
-    id: string;
-    isAdmin: boolean;
-    createdAt: string;
-    updatedAt: string;
   };
-  desk: {
-    label: string;
-    id: string;
-    equipment: string[];
-    type: string;
-    office: {
-      name: string;
-      columns: number;
-      rows: number;
-      id: string;
-      map: string;
-      createdAt: string;
-      updatedAt: string;
-    };
-    createdAt: string;
-    updatedAt: string;
-  };
-  createdAt: string;
-  updatedAt: string;
+  // New properties for handling equipment visibility
+  showEquipment: boolean; // Indicates whether equipment details are visible
+  toggleEquipment: (id: string) => void; // Function to toggle equipment visibility
 }

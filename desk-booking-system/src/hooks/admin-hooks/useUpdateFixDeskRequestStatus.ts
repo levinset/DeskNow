@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 interface FixDeskRequestFormData {
   id: string;
-  status: 'approved' | 'rejected';
+  status: string;
 }
 
 const updateFixDeskRequest = async (requestData: FixDeskRequestFormData) => {

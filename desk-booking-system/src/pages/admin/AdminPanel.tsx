@@ -89,7 +89,7 @@ const AdminPanel = () => {
         <div>
           <button
             onClick={toggleMenu}
-            className="block md:hidden fixed z-10 top-4 right-4 p-2 rounded-md bg-gray-800 text-white"
+            className="block md:hidden absolute z-10 top-10 right-10 p-2 rounded-md bg-gray-800 text-white"
           >
             Menu
           </button>

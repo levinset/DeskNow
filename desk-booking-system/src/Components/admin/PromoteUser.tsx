@@ -3,7 +3,6 @@ import axios from "axios";
 
 interface UserProps {
   userId: string;
-    
 }
 
 const PromoteUser: React.FC<UserProps> = ({ userId }) => {
@@ -39,11 +38,16 @@ const PromoteUser: React.FC<UserProps> = ({ userId }) => {
 
   return (
     <div>
-      <button onClick={handlePromoteUser} disabled={isLoading} className="group inline-block rounded bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75 uppercase">
+      <button
+        onClick={handlePromoteUser}
+        disabled={isLoading}
+        className="group inline-block rounded bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75 uppercase"
+      >
         {isLoading ? "Promoting..." : "Promote User"}
       </button>
       {isError && <div>Error promoting user</div>}
-      {isPromoted && <div>User promoted to admin successfully!</div>} {/* Display success message */}
+      {isPromoted && <div>User promoted to admin successfully!</div>}{" "}
+      {/* Display success message */}
     </div>
   );
 };
